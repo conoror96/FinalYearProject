@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
 export interface Account {
   id?: string,
   name: string,
-  notes: string
+  accId: string,
+  accNo: number,
+  accBal: number
 }
  
 @Injectable({
@@ -48,7 +50,7 @@ export class AccountService {
   }
  
   updateAccount(account: Account): Promise<void> {
-    return this.accountCollection.doc(account.id).update({ name: account.name, notes: account.notes });
+    return this.accountCollection.doc(account.id).update({ name: account.name, accId: account.accId, accNo: account.accNo, accBal: account.accBal });
   }
  
   deleteAccount(id: string): Promise<void> {

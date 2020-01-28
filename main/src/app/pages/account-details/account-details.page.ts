@@ -12,7 +12,9 @@ export class AccountDetailsPage implements OnInit {
 
   idea: Account = {
     name: '',
-    notes: ''
+    accId: '',
+    accNo: 0,
+    accBal: 0
   };
   
   constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService,
