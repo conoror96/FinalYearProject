@@ -1,5 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+       <!-- development button -->
+      <ion-button [routerLink]="['/christian']">christian</ion-button>
+      <ion-button [routerLink]="['/card-reader']">card reader</ion-button>
+      <ion-button button-icon ion-home [routerLink]="['/home']">home</ion-button>
+    </ion-buttons>
     <ion-title>Accounts</ion-title>
   </ion-toolbar>
 </ion-header>

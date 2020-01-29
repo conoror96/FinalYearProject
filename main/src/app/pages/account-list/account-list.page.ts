@@ -16,4 +16,4 @@ export class AccountListPage implements OnInit {
   ngOnInit() {
     this.accs = this.accountService.getAccounts();
   }
-}
+} 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService, Account } from 'src/app/services/account.service';
 import { ToastController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-account-details',
   templateUrl: './account-details.page.html',
@@ -51,6 +52,7 @@ export class AccountDetailsPage implements OnInit {
  
   updateAccount() {
     this.accountService.updateAccount(this.idea).then(() => {
+      this.router.navigateByUrl('/');
       this.showToast('Idea updated');
     }, err => {
       this.showToast('There was a problem updating your idea :(');

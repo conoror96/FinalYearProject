@@ -11,9 +11,9 @@ https://github.com/card-io/card.io-Cordova-Plugin
 })
 export class CardReaderPage implements OnInit {
 
-  constructor(private cardIO: CardIO) { 
+ /* constructor(private cardIO: CardIO) { 
     
-    this.cardIO.canScan()
+    /*this.cardIO.canScan()
     .then(
       (res: boolean) => {
         if(res){
@@ -31,6 +31,14 @@ export class CardReaderPage implements OnInit {
 
   ngOnInit() {
   }
+  
+  */
+
+ constructor() { }
+
+ ngOnInit() {
+ }
+
 
   
 }
