@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
  
 const routes: Routes = [
-  { path: '', loadChildren: './pages/account-list/account-list.module#AccountListPageModule' },
+  { path: '', loadChildren: './home/home/home.module#HomePageModule' },
   { path: 'account-list', loadChildren: './pages/account-list/account-list.module#AccountListPageModule' },
   { path: 'idea', loadChildren: './pages/account-details/account-details.module#AccountDetailsPageModule' },
   { path: 'idea/:id', loadChildren: './pages/account-details/account-details.module#AccountDetailsPageModule' },
@@ -13,10 +13,10 @@ const routes: Routes = [
     path: 'christian',
     loadChildren: () => import('./pages/christian/christian.module').then( m => m.ChristianPageModule)
   },
-  {
+  /*{
     path: 'home',
     loadChildren: () => import('./home/home/home.module').then( m => m.HomePageModule)
-  },
+  },*/
   
 ];
   

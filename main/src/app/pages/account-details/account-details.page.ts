@@ -34,7 +34,7 @@ export class AccountDetailsPage implements OnInit {
  
   addAccount() {
     this.accountService.addAccount(this.idea).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/account-list');
       this.showToast('Idea added');
     }, err => {
       this.showToast('There was a problem adding your idea :(');
@@ -43,7 +43,7 @@ export class AccountDetailsPage implements OnInit {
  
   deleteAccount() {
     this.accountService.deleteAccount(this.idea.id).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/account-list');
       this.showToast('Idea deleted');
     }, err => {
       this.showToast('There was a problem deleting your idea :(');
@@ -52,7 +52,7 @@ export class AccountDetailsPage implements OnInit {
  
   updateAccount() {
     this.accountService.updateAccount(this.idea).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/account-list');
       this.showToast('Idea updated');
     }, err => {
       this.showToast('There was a problem updating your idea :(');
