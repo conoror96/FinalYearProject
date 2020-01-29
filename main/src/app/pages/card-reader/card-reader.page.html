@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cardReader</ion-title>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+         <!-- development button -->
+         <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-button-title-size">My Card</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <button id="scanBtn"> Scan Now!</button>
+  <div class="addButton" (click)="addCard()">
+    <ion-icon name="add"></ion-icon>
+    Add Card
+  </div>
 </ion-content>

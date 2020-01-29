@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CardReaderPageRoutingModule } from './card-reader-routing.module';
 
 import { CardReaderPage } from './card-reader.page';
+import {CardIO} from '@ionic-native/card-io/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { CardReaderPage } from './card-reader.page';
     IonicModule,
     CardReaderPageRoutingModule
   ],
-  declarations: [CardReaderPage]
+  declarations: [CardReaderPage],
+  providers: [CardIO]
 })
 export class CardReaderPageModule {}
