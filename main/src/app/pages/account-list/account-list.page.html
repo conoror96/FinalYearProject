@@ -8,15 +8,15 @@
   </ion-toolbar>
 </ion-header>
  
-<ion-content>
+<ion-content color="secondary">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/idea">
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="add" color="secondary"></ion-icon>
     </ion-fab-button>
   </ion-fab>
  
   <ion-list>
-    <ion-item button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (accs | async)">
+    <ion-item color="secondary" button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (accs | async)">
       {{ idea.name }}
     </ion-item>
   </ion-list>

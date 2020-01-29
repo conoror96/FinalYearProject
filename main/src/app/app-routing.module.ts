@@ -13,6 +13,10 @@ const routes: Routes = [
     path: 'christian',
     loadChildren: () => import('./pages/christian/christian.module').then( m => m.ChristianPageModule)
   },
+  {
+    path: 'nfc',
+    loadChildren: () => import('./pages/nfc/nfc.module').then( m => m.NfcPageModule)
+  },
   /*{
     path: 'home',
     loadChildren: () => import('./home/home/home.module').then( m => m.HomePageModule)

@@ -12,31 +12,31 @@
   </ion-toolbar>
 </ion-header>
  
-<ion-content padding>
+<ion-content padding color="secondary">
  
-  <ion-item>
+  <ion-item color="secondary">
     <ion-label position="stacked">Name</ion-label>
     <ion-input [(ngModel)]="idea.name"></ion-input>
   </ion-item>
  
-  <ion-item>
+  <ion-item color="secondary">
     <ion-label position="stacked">Account ID</ion-label>
     <ion-textarea [(ngModel)]="idea.accId" rows="3"></ion-textarea>
   </ion-item>
 
-  <ion-item>
+  <ion-item color="secondary">
     <ion-label position="stacked">Account No.</ion-label>
     <ion-textarea [(ngModel)]="idea.accNo" rows="3"></ion-textarea>
   </ion-item>
 
 
-<ion-item>
+<ion-item color="secondary">
   <ion-label position="stacked">Account Balance</ion-label>
   <ion-textarea [(ngModel)]="idea.accBal" rows="3"></ion-textarea>
 </ion-item>
 </ion-content>
  
-<ion-footer *ngIf="!idea.id"> 
+<ion-footer *ngIf="!idea.id" color="secondary"> 
   <ion-toolbar color="success">
     <ion-button expand="full" fill="clear" color="light" (click)="addAccount()">
       <ion-icon name="checkmark" slot="start"></ion-icon>
@@ -45,7 +45,7 @@
   </ion-toolbar>
 </ion-footer>
  
-<ion-footer *ngIf="idea.id">
+<ion-footer *ngIf="idea.id" color="secondary">
   <ion-row no-padding text-center>
     <ion-col size="6">
       <ion-button expand="block" fill="outline" color="danger" (click)="deleteAccount()">
