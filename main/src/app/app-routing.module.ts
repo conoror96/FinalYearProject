@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'nfc',
     loadChildren: () => import('./pages/nfc/nfc.module').then( m => m.NfcPageModule)
   },
+  {
+    path: 'paypal',
+    loadChildren: () => import('./pages/paypal/paypal.module').then( m => m.PaypalPageModule)
+  },
   /*{
     path: 'home',
     loadChildren: () => import('./home/home/home.module').then( m => m.HomePageModule)
