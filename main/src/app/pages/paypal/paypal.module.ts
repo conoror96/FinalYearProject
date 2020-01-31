@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PaypalPageRoutingModule } from './paypal-routing.module';
 
 import { PaypalPage } from './paypal.page';
+import { PayPal } from '@ionic-native/paypal/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { PaypalPage } from './paypal.page';
     IonicModule,
     PaypalPageRoutingModule
   ],
-  declarations: [PaypalPage]
+  declarations: [PaypalPage],
+  providers: [PayPal]
 })
 export class PaypalPageModule {}
