@@ -18,6 +18,12 @@ export class AccountService {
   private accs: Observable<Account[]>;
   private accountCollection: AngularFirestoreCollection<Account>;
  
+/* 
+firestore.collection("users").doc(uid).set({
+    name: "Sparky"
+})
+*/
+
   constructor(private afs: AngularFirestore) {
     this.accountCollection = this.afs.collection<Account>('accs');
     this.accs = this.accountCollection.snapshotChanges().pipe(

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from 'src/app/services/authentication.service';
+
 import { NavController } from '@ionic/angular';
  
 @Component({
@@ -45,6 +46,7 @@ export class RegisterPage implements OnInit {
     });
   }
  
+
   tryRegister(value){
     this.authService.registerUser(value)
      .then(res => {

@@ -15,7 +15,7 @@ export class AccountDetailsPage implements OnInit {
     name: '',
     accId: '',
     accNo: 0,
-    accBal: 0
+    accBal: 0,
   };
   
   constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService,

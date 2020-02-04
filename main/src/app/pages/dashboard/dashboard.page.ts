@@ -9,6 +9,7 @@ import { AuthenticateService } from 'src/app/services/authentication.service';
 })
 export class DashboardPage implements OnInit {
  
+  
  
   userEmail: string;
  
@@ -18,6 +19,8 @@ export class DashboardPage implements OnInit {
   ) {}
  
   ngOnInit(){
+
+  
     
     if(this.authService.userDetails()){
       this.userEmail = this.authService.userDetails().email;
