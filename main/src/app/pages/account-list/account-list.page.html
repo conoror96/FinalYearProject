@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-       <!-- development button -->
        <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>Accounts</ion-title>
@@ -10,11 +9,12 @@
  
 <ion-content color="secondary">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/idea">
+    <ion-fab-button *ngIf='userEmail == "test@test.com"' routerLink="/idea">
       <ion-icon name="add" color="secondary"></ion-icon>
     </ion-fab-button>
   </ion-fab>
  
+  
   <ion-list>
     <ion-item color="secondary" button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (accs | async)">
       {{ idea.name }}

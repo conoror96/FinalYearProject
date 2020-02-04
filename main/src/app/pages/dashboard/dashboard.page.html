@@ -5,9 +5,9 @@
       <ion-button [routerLink]="['/christian']">christian</ion-button>
       <ion-button [routerLink]="['/card-reader']">card reader</ion-button>
       <ion-button [routerLink]="['/nfc']">nfc</ion-button>
-      <ion-button [routerLink]="['/paypal']">paypal</ion-button>
-     <!-- <ion-button *ngIf="auth.zTiqKyNvyNddqt6CKY40iRA00e73" [routerLink]="['/idea']">account details</ion-button> -->
       <ion-button [routerLink]="['/account-list']">account list</ion-button>
+      <ion-button  [routerLink]="['/paypal']">paypal</ion-button>
+      <ion-button color="warning" *ngIf='userEmail == "test@test.com"' [routerLink]="['/admin']">Admin</ion-button>
     </ion-buttons>
     <ion-title></ion-title>
   </ion-toolbar>
@@ -26,7 +26,7 @@
 </ion-footer> -->
 
 <ion-footer color="secondary"> 
-  <ion-toolbar color="success">
+  <ion-toolbar color="warning">
     <ion-button expand="full" fill="clear" color="light" (click)="logout()">
       <ion-icon name="close-circle" slot="start"></ion-icon>
       Logout

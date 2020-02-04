@@ -37,7 +37,7 @@ export class AccountDetailsPage implements OnInit {
       this.router.navigateByUrl('/account-list');
       this.showToast('Idea added');
     }, err => {
-      this.showToast('There was a problem adding your idea :(');
+      this.showToast('Access denied');
     });
   }
  
@@ -46,7 +46,7 @@ export class AccountDetailsPage implements OnInit {
       this.router.navigateByUrl('/account-list');
       this.showToast('Idea deleted');
     }, err => {
-      this.showToast('There was a problem deleting your idea :(');
+      this.showToast('Access denied');
     });
   }
  
@@ -55,7 +55,7 @@ export class AccountDetailsPage implements OnInit {
       this.router.navigateByUrl('/account-list');
       this.showToast('Idea updated');
     }, err => {
-      this.showToast('There was a problem updating your idea :(');
+      this.showToast('Access denied');
     });
   }
  

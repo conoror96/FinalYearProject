@@ -12,6 +12,11 @@ export class DashboardPage implements OnInit {
   
  
   userEmail: string;
+  
+
+  if(userEmail = 'ckkor20@live.ie'){
+   
+  }
  
   constructor(
     private navCtrl: NavController,
@@ -20,6 +25,7 @@ export class DashboardPage implements OnInit {
  
   ngOnInit(){
 
+   
   
     
     if(this.authService.userDetails()){
