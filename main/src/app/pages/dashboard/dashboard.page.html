@@ -19,8 +19,17 @@
 <h1>Logged in user : {{userEmail}}</h1>
 </ion-content>
 
-<ion-footer (click)="logout()">
-  <ion-toolbar color="secondary">
+<!-- <ion-footer (click)="logout()" color="secondary">
+  <ion-toolbar color="success">
     <ion-title>Log out</ion-title>
+  </ion-toolbar>
+</ion-footer> -->
+
+<ion-footer color="secondary"> 
+  <ion-toolbar color="success">
+    <ion-button expand="full" fill="clear" color="light" (click)="logout()">
+      <ion-icon name="close-circle" slot="start"></ion-icon>
+      Logout
+    </ion-button>
   </ion-toolbar>
 </ion-footer>
