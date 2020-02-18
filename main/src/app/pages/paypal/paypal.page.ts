@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 
-
-declare var window: any;
 @Component({
   selector: 'app-paypal',
   templateUrl: './paypal.page.html',
@@ -11,8 +9,8 @@ declare var window: any;
 export class PaypalPage {
   constructor(private payPal: PayPal) { }
   paymentAmount: string = '3.33';
-  currency: string = 'USD';
-  currencyIcon: string = '$';
+  currency: string = 'EUR';
+  currencyIcon: string = '€';
 
   payWithPaypal() {
     console.log("Pay ????");
