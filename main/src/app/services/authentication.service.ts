@@ -41,4 +41,15 @@ export class AuthenticateService {
   userDetails(){
     return firebase.auth().currentUser;
   }
+/*
+  //data.cardholderName + ' ' + data.cardNumber + ' ' + data.cardType + ' '
+  // + data.expiryMonth + ' ' + data.expiryYear
+  cardDetails(value){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().saveCardDetails(value.email, value.password)
+      .then(
+        res => resolve(res),
+        err => reject(err))
+    })
+  }*/
 }

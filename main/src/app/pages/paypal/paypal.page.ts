@@ -8,64 +8,53 @@ declare var window: any;
   templateUrl: './paypal.page.html',
   styleUrls: ['./paypal.page.scss'],
 })
-export class PaypalPage implements OnInit {
-
-  
-
-  ngOnInit() {
-  }
-
-
-
-  paymentAmount: string = '1.50';
+export class PaypalPage {
+  constructor(private payPal: PayPal) { }
+  paymentAmount: string = '3.33';
   currency: string = 'USD';
   currencyIcon: string = '$';
-  constructor() {
-    this.renderButton();
-  }
 
-  renderButton() {
-    window.paypal.Button.render({
+  payWithPaypal() {
+    console.log("Pay ????");
+    this.payPal.init({
+      PayPalEnvironmentProduction: 'YOUR_PRODUCTION_CLIENT_ID',
+      PayPalEnvironmentSandbox: 'AQEWlh6KVAMqVwWMwbeDro__MU88dUKdisVCn1DMcp-igKMNWsWW2qvpVEW8KSNq9Zq7Dq_6AqobO6xR'
+    }).then(() => {
+      // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
+      this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+        // Only needed if you get an "Internal Service Error" after PayPal login!
+        //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+      })).then(() => {
+        let payment = new PayPalPayment(this.paymentAmount, this.currency, 'Description', 'sale');
+        this.payPal.renderSinglePaymentUI(payment).then((res) => {
+          console.log(res);
+          // Successfully paid
 
-      env: 'sandbox', // sandbox | production
-      // PayPal Client IDs - replace with your own
-      // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-      client: {
-          sandbox: 'Aa-5mEWGb3ZR-tyQ_fNNa8J3aBTO1p-7SprFzNFRoStAOAJD3bPWnfV32jwdYQF3GbIH51xYEGPLhEGo',
-          // production: '<insert production client id>'
-      },
-      style: {
-        size: 'large',
-        color: 'gold',
-        shape: 'rect',
-       },
-      // Show the buyer a 'Pay Now' button in the checkout flow
-      commit: true,
-      // payment() is called when the button is clicked
-      payment: function(data, actions) {
-        // Make a call to the REST api to create the payment
-        return actions.payment.create({
-            payment: {
-                transactions: [
-                    {
-                        amount: { total: '155', currency: 'USD' }
-                    }
-                ]
-            }
+          // Example sandbox response
+          //
+          // {
+          //   "client": {
+          //     "environment": "sandbox",
+          //     "product_name": "PayPal iOS SDK",
+          //     "paypal_sdk_version": "2.16.0",
+          //     "platform": "iOS"
+          //   },
+          //   "response_type": "payment",
+          //   "response": {
+          //     "id": "PAY-1AB23456CD789012EF34GHIJ",
+          //     "state": "approved",
+          //     "create_time": "2016-10-03T13:33:33Z",
+          //     "intent": "sale"
+          //   }
+          // }
+        }, () => {
+          // Error or render dialog closed without being successful
         });
-
-      },
-    
-      // onAuthorize() is called when the buyer approves the payment
-      onAuthorize: function(data, actions) {
-          // Make a call to the REST api to execute the payment
-          return actions.payment.execute().then(function(details) {
-            console.log(details)
-              window.alert('Payment Complete!');
-          });
-      }
-
-  }, '#paypal');
-
+      }, () => {
+        // Error in configuration
+      });
+    }, () => {
+      // Error in initialization, maybe PayPal isn't supported or something else
+    });
   }
 }

@@ -1,15 +1,19 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <!-- Header buttons -->
-      <ion-button [routerLink]="['/christian']">christian</ion-button>
-      <ion-button [routerLink]="['/card-reader']">card reader</ion-button>
-      <ion-button [routerLink]="['/nfc']">nfc</ion-button>
-      <ion-button [routerLink]="['/account-list']">account list</ion-button>
-      <ion-button  [routerLink]="['/paypal']">paypal</ion-button>
-      <ion-button color="warning" *ngIf='userEmail == "test@test.com"' [routerLink]="['/admin']">Admin</ion-button>
+  <ion-toolbar color="warning">
+    <ion-buttons>
+      <ion-col style = "margin-right: 200px;">
+        <ion-button expand="full" fill="clear" color="light" (click)="logout()">
+          <ion-icon name="md-menu" slot="start"></ion-icon>
+          Menu
+        </ion-button>
+      </ion-col>
+      <ion-col style = "margin-left: 200px;">
+        <ion-button expand="full" fill="clear" color="light" (click)="logout()">
+          <ion-icon name="md-exit" slot="start"></ion-icon>
+          Logout
+        </ion-button>
+      </ion-col>
     </ion-buttons>
-    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,10 +30,34 @@
 </ion-footer> -->
 
 <ion-footer color="secondary"> 
-  <ion-toolbar color="warning">
-    <ion-button expand="full" fill="clear" color="light" (click)="logout()">
-      <ion-icon name="close-circle" slot="start"></ion-icon>
-      Logout
-    </ion-button>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <!-- Footer buttons -->
+      <ion-button [routerLink]="['/shopping']">
+        <ion-icon name="md-cart" slot="start"></ion-icon>
+          shopping
+      </ion-button>
+      <ion-button [routerLink]="['/card-reader']">
+        <ion-icon name="md-card" slot="start"></ion-icon>
+          card reader
+      </ion-button>
+      <ion-button [routerLink]="['/nfc']">
+        <ion-icon name="md-exit" slot="start"></ion-icon>
+          nfc
+      </ion-button>
+      <ion-button [routerLink]="['/account-list']">
+        <ion-icon name="md-contacts" slot="start"></ion-icon>
+          account list
+      </ion-button>
+      <ion-button [routerLink]="['/paypal']">
+        <ion-icon name="logo-pinterest" slot="start"></ion-icon>
+          paypal
+      </ion-button>
+      <ion-button color="warning" *ngIf='userEmail == "test@test.com"' [routerLink]="['/admin']">
+        <ion-icon name="md-contact" slot="start"></ion-icon>
+          Admin
+      </ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-footer>
