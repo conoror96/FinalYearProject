@@ -13,11 +13,6 @@ export class DashboardPage implements OnInit {
  
   userEmail: string;
   
-
-  if(userEmail = 'ckkor20@live.ie'){
-   
-  }
- 
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService

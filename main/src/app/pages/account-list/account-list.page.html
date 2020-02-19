@@ -9,7 +9,7 @@
  
 <ion-content color="secondary">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button *ngIf='userEmail == "test@test.com"' routerLink="/idea">
+    <ion-fab-button  routerLink="/idea">
       <ion-icon name="add" color="secondary"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -17,7 +17,7 @@
   
   <ion-list>
     <ion-item color="secondary" button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (accs | async)">
-      {{ idea.name }}
+      {{ idea.item }}
     </ion-item>
   </ion-list>
 </ion-content>

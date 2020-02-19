@@ -4,10 +4,7 @@
       <ion-back-button defaultHref="/"></ion-back-button>
       <ion-button [routerLink]="['/account-list']">account list</ion-button>
     </ion-buttons>
-   
-    
-    
-    
+  
     <ion-title>Account Details</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,24 +12,35 @@
 <ion-content padding color="secondary">
  
   <ion-item color="secondary">
-    <ion-label position="stacked">Name</ion-label>
-    <ion-input [(ngModel)]="idea.name"></ion-input>
+    <ion-label position="stacked">Item</ion-label>
+    <ion-input [(ngModel)]="idea.item"></ion-input>
   </ion-item>
  
   <ion-item color="secondary">
-    <ion-label position="stacked">Account ID</ion-label>
-    <ion-textarea [(ngModel)]="idea.accId" rows="3"></ion-textarea>
+    <ion-label position="stacked">Item ID</ion-label>
+    <ion-textarea [(ngModel)]="idea.itemID" rows=""></ion-textarea>
   </ion-item>
 
   <ion-item color="secondary">
-    <ion-label position="stacked">Account No.</ion-label>
-    <ion-textarea [(ngModel)]="idea.accNo" rows="3"></ion-textarea>
+    <ion-label position="stacked">Colour</ion-label>
+    <ion-textarea [(ngModel)]="idea.colour" rows="1"></ion-textarea>
   </ion-item>
 
 
 <ion-item color="secondary">
-  <ion-label position="stacked">Account Balance</ion-label>
-  <ion-textarea [(ngModel)]="idea.accBal" rows="3"></ion-textarea>
+  <ion-label position="stacked">Price</ion-label>
+  <ion-textarea [(ngModel)]="idea.price" rows="3"></ion-textarea>
+</ion-item>
+
+<ion-item color="secondary">
+  <ion-label position="stacked">Image</ion-label>
+  <ion-textarea [(ngModel)]="idea.image" rows="3"></ion-textarea>
+</ion-item>
+
+
+<ion-item color="secondary">
+  <ion-label position="stacked">Stock</ion-label>
+  <ion-textarea [(ngModel)]="idea.stock" rows="1"></ion-textarea>
 </ion-item>
 </ion-content>
  

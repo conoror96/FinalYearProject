@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
  
 export interface Account {
   id?: string,
-  name: string,
-  accId: string,
-  accNo: number,
-  accBal: number
+  item: string,
+  itemID: string,
+  colour: string,
+  price: number,
+  image: string,
+  stock: number
 }
  
 @Injectable({
@@ -56,7 +58,8 @@ firestore.collection("users").doc(uid).set({
   }
  
   updateAccount(account: Account): Promise<void> {
-    return this.accountCollection.doc(account.id).update({ name: account.name, accId: account.accId, accNo: account.accNo, accBal: account.accBal });
+    return this.accountCollection.doc(account.id).update({ item: account.item, itemID: account.itemID, colour: account.colour,
+       price: account.price, image: account.image, stock: account.stock });
   }
  
   deleteAccount(id: string): Promise<void> {

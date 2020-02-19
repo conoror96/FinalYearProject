@@ -5,9 +5,10 @@
       <ion-button [routerLink]="['/christian']">christian</ion-button>
       <ion-button [routerLink]="['/card-reader']">card reader</ion-button>
       <ion-button [routerLink]="['/nfc']">nfc</ion-button>
-      <ion-button [routerLink]="['/account-list']">account list</ion-button>
+      <ion-button [routerLink]="['/account-list']">Product List</ion-button>
       <ion-button  [routerLink]="['/paypal']">paypal</ion-button>
       <ion-button color="warning" *ngIf='userEmail == "test@test.com"' [routerLink]="['/admin']">Admin</ion-button>
+      <ion-button ion-icon name="person" [routerLink]="['/account']">account</ion-button>
     </ion-buttons>
     <ion-title></ion-title>
   </ion-toolbar>

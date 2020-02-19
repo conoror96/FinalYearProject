@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="82611e81-dd7d-4f9e-83ac-8da8f1f6e3d0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/main/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/5.4.1/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/5.4.1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/browserslist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/e2e/protractor.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/e2e/src/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/e2e/src/app.po.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/e2e/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/ionic.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/icon/drawable-hdpi-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/icon/drawable-ldpi-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/icon/drawable-mdpi-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/icon/drawable-xhdpi-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/icon/drawable-xxhdpi-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/icon/drawable-xxxhdpi-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-land-hdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-land-ldpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-land-mdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-land-xhdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-land-xxhdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-land-xxxhdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-port-hdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-port-ldpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-port-mdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-port-xhdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-port-xxhdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/splash/drawable-port-xxxhdpi-screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/android/xml/network_security_config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-1024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-20@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-20@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-24@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-27.5@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-29@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-29@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-40@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-40@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-44@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-50@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-60@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-60@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-72@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-76@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-83.5@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-86@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-98@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-small@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon-small@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/icon/icon@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-2436h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-568h@2x~iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-667h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-736h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Landscape-2436h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Landscape-736h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Landscape@2x~ipad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Landscape@~ipadpro.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Landscape~ipad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Portrait@2x~ipad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Portrait@~ipadpro.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default-Portrait~ipad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default@2x~iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default@2x~universal~anyany.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/ios/splash/Default~iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/resources/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/app-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/app.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/home/home/home-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/home/home/home.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/home/home/home.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/home/home/home.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/home/home/home.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/home/home/home.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/admin/admin-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/admin/admin.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/admin/admin.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/admin/admin.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/admin/admin.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/admin/admin.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/card-reader/card-reader-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/card-reader/card-reader.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/card-reader/card-reader.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/card-reader/card-reader.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/card-reader/card-reader.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/card-reader/card-reader.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/christian/christian-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/christian/christian.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/christian/christian.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/christian/christian.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/christian/christian.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/christian/christian.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/login/login-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/login/login.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/login/login.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/login/login.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/login/login.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/login/login.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/paypal/paypal-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/paypal/paypal.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/paypal/paypal.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/paypal/paypal.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/paypal/paypal.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/paypal/paypal.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/register/register-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/register/register.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/register/register.page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/register/register.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/register/register.page.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/pages/register/register.page.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/services/account.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/services/account.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/services/authentication.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/services/authentication.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/services/nfc-service.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/app/services/nfc-service.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/assets/icon/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/assets/shapes.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/environments/environment.prod.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/polyfills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/theme/variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/zone-flags.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/tslint.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/pages/account-list/account-list.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/pages/dashboard/dashboard.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/services/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/services/account.service.ts" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/main" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/FinalYearProject.iml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="24" />
+    <option name="width" value="1260" />
+    <option name="height" value="669" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FinalYearProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalYearProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82611e81-dd7d-4f9e-83ac-8da8f1f6e3d0" name="Default Changelist" comment="" />
+      <created>1580912236763</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580912236763</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="24" width="1260" height="669" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.3292978" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Resources Explorer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Terminal" sideWeight="0.49959645" visible="true" weight="0.35528597" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.5004035" side_tool="true" visible="true" weight="0.35528597" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>FinalYearProject</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

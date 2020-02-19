@@ -12,10 +12,12 @@ import { ToastController } from '@ionic/angular';
 export class AccountDetailsPage implements OnInit {
 
   idea: Account = {
-    name: '',
-    accId: '',
-    accNo: 0,
-    accBal: 0,
+    item: '',
+    itemID: '',
+    colour: '',
+    price: 0,
+    image: '',
+    stock: 0,
   };
   
   constructor(private activatedRoute: ActivatedRoute, private accountService: AccountService,
