@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
  
@@ -9,7 +10,7 @@ export interface Account {
   itemID: string,
   colour: string,
   price: number,
-  image: string,
+  image: String,
   stock: number
 }
  
@@ -26,8 +27,9 @@ firestore.collection("users").doc(uid).set({
 })
 */
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
     this.accountCollection = this.afs.collection<Account>('accs');
+    
     this.accs = this.accountCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -65,4 +67,22 @@ firestore.collection("users").doc(uid).set({
   deleteAccount(id: string): Promise<void> {
     return this.accountCollection.doc(id).delete();
   }
+
+  // Upload Task 
+  task: AngularFireUploadTask;
+ 
+  // Progress in percentage
+  percentage: Observable<number>;
+ 
+  // Snapshot of uploading file
+  snapshot: Observable<any>;
+ 
+  // Uploaded File URL
+  UploadedFileURL: Observable<string>;
+ 
+  //Uploaded Image List
+  images: Observable<AccountService[]>;
+
+
+  private imageCollection: AngularFirestoreCollection<AccountService>;
 }
