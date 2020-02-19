@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PaypalPageRoutingModule } from './paypal-routing.module';
+import { RouterModule } from '@angular/router';
 
 import { PaypalPage } from './paypal.page';
 import { PayPal } from '@ionic-native/paypal/ngx';
@@ -14,7 +15,12 @@ import { PayPal } from '@ionic-native/paypal/ngx';
     CommonModule,
     FormsModule,
     IonicModule,
-    PaypalPageRoutingModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: PaypalPage
+      }
+    ])
   ],
   declarations: [PaypalPage],
   providers: [PayPal]

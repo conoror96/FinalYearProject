@@ -11,8 +11,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/card-reader/card-reader.module').then( m => m.CardReaderPageModule)
   },
   {
-    path: 'christian',
-    loadChildren: () => import('./pages/christian/christian.module').then( m => m.ChristianPageModule)
+    path: 'shopping',
+    loadChildren: () => import('./pages/shopping/shopping.module').then( m => m.ShoppingPageModule)
   },
   {
     path: 'nfc',
