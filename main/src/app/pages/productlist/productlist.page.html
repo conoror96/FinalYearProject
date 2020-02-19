@@ -3,22 +3,19 @@
     <ion-buttons slot="start">
        <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Accounts</ion-title>
+    <ion-title>Product List</ion-title>
   </ion-toolbar>
 </ion-header>
  
 <ion-content color="secondary">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button  routerLink="/idea">
-      <ion-icon name="add" color="secondary"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
- 
-  
   <ion-list>
     <ion-item color="secondary" button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (accs | async)">
-      {{ idea.item }}
+      {{ idea.item }} <br />
+      {{ idea.itemID }} <br />
+      {{ idea.colour }} <br />
+      {{ idea.price }} <br />
+      {{ idea.stock }} <br />
+      <ion-img [src]="idea.image"></ion-img>
     </ion-item>
-    
   </ion-list>
 </ion-content>

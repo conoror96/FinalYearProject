@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
  
@@ -21,13 +20,8 @@ export class AccountService {
   private accs: Observable<Account[]>;
   private accountCollection: AngularFirestoreCollection<Account>;
  
-/* 
-firestore.collection("users").doc(uid).set({
-    name: "Sparky"
-})
-*/
 
-  constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
+  constructor(private afs: AngularFirestore) {
     this.accountCollection = this.afs.collection<Account>('accs');
     
     this.accs = this.accountCollection.snapshotChanges().pipe(
@@ -68,21 +62,6 @@ firestore.collection("users").doc(uid).set({
     return this.accountCollection.doc(id).delete();
   }
 
-  // Upload Task 
-  task: AngularFireUploadTask;
  
-  // Progress in percentage
-  percentage: Observable<number>;
- 
-  // Snapshot of uploading file
-  snapshot: Observable<any>;
- 
-  // Uploaded File URL
-  UploadedFileURL: Observable<string>;
- 
-  //Uploaded Image List
-  images: Observable<AccountService[]>;
 
-
-  private imageCollection: AngularFirestoreCollection<AccountService>;
 }
