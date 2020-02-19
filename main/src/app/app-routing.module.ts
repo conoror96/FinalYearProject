@@ -49,6 +49,10 @@ const routes: Routes = [
   {
     path: 'productlist',
     loadChildren: () => import('./pages/productlist/productlist.module').then( m => m.ProductlistPageModule)
+  },
+  {
+    path: 'shopping-cart',
+    loadChildren: () => import('./pages/shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
   }
   
 ];
