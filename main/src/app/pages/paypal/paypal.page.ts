@@ -15,10 +15,10 @@ export class PaypalPage {
   payWithPaypal() {
     console.log("Pay ????");
     this.payPal.init({
-      PayPalEnvironmentProduction: 'YOUR_PRODUCTION_CLIENT_ID',
-      PayPalEnvironmentSandbox: 'AQEWlh6KVAMqVwWMwbeDro__MU88dUKdisVCn1DMcp-igKMNWsWW2qvpVEW8KSNq9Zq7Dq_6AqobO6xR'
+      PayPalEnvironmentProduction: 'access_token$sandbox$467xfggfm3bzfnqc$3fda74670a8fd2d82aeaeafea671354e',
+      PayPalEnvironmentSandbox: 'YAT6eYa7wKysra-WCGlKhO2NT2RfBXsW1XQmT06fhf3dV8yFCcDMHPtqPs4Cqy9BF0UTCSqPpDHpIjNf9'
     }).then(() => {
-      // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
+      //Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
       this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
         // Only needed if you get an "Internal Service Error" after PayPal login!
         //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
