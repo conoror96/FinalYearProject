@@ -1,43 +1,44 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
- 
-<ion-content padding color="secondary">
-  <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
- 
-    <ion-item>
-      <ion-label  position="floating" color="primary">Email</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.email">
-        <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
- 
-    <ion-item>
-      <ion-label  position="floating" color="primary">Password</ion-label>
-      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.password">
-        <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
- 
-    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Log In</ion-button>
- 
-    <label class="error-message">{{errorMessage}}</label>
-  </form>
-  <p class="go-to-register">
-    No account yet? <a (click)="goToRegisterPage()">Create an account.</a>
-  </p>
-  <p>login as user: email: test@test.com | password: test123 to access admin features</p>
-</ion-content>
- 
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>New Account</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input placeholder="John" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Select Role</ion-label>
+        <ion-select formControlName="role">
+            <ion-select-option value="BUYER">Buyer</ion-select-option>
+            <ion-select-option value="SELLER">Seller</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
+      [disabled]="!registerForm.valid">
+        Register
+      </ion-button>
+
+      <ion-button expand="block" type="button" color="secondary" fill="clear"
+      class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
+      <ion-icon name="arrow-back" slot="start"></ion-icon>
+    Back to Login
+    </ion-button>
+
+    </form>
+  </ion-card-content>
+</ion-card>

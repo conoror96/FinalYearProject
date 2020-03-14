@@ -1,67 +1,100 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavController } from '@ionic/angular';
-import { AuthenticateService } from 'src/app/services/authentication.service';
- 
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { LoadingController, ToastController, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- 
-  validations_form: FormGroup;
-  errorMessage: string = 'problem';
- 
-  constructor(
- 
-    private navCtrl: NavController,
-    private authService: AuthenticateService,
-    private formBuilder: FormBuilder
- 
-  ) { }
- 
+  registerForm: FormGroup;
+  loginForm: FormGroup;
+
+  @ViewChild('flipcontainer', { static: false }) flipcontainer: ElementRef;
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController, private alertCtrl: AlertController, private router: Router) { }
+
   ngOnInit() {
- 
-    this.validations_form = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required
-        // edit later for more secure passwords with regexp
-      ])),
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      name: ['', Validators.required],
+      role: ['BUYER', Validators.required]
+    });
+
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
- 
- 
-  validation_messages = {
-    'email': [
-      { type: 'required', message: 'Valid Email Required' },
-      { type: 'pattern', message: 'Please Enter a Valid Email' }
-    ],
-    'password': [
-      { type: 'required', message: 'Password is Required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
-    ]
-  };
- 
- 
-  loginUser(value){
-    this.authService.loginUser(value)
-    .then(res => {
-      console.log(res);
-      this.errorMessage = "";
-      this.navCtrl.navigateForward('/dashboard');
-    }, err => {
-      this.errorMessage = err.message;
+
+  navigateByRole(role) {
+    if (role == 'BUYER') {
+      this.router.navigateByUrl('/buyer');
+    } else if (role == 'SELLER') {
+      this.router.navigateByUrl('/seller');
+    }
+  }
+
+  async login() {
+    let loading = await this.loadingCtrl.create({
+      message: 'Loading...'
+    });
+    await loading.present();
+
+    this.authService.signIn(this.loginForm.value).subscribe(user => {
+      loading.dismiss();
+      console.log('after login: ', user);
+      this.navigateByRole(user['role']);
+    },
+    async err => {
+      loading.dismiss();
+
+      let alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: err.message,
+        buttons: ['OK']
+      });
+      alert.present();
     })
   }
- 
-  goToRegisterPage(){
-    this.navCtrl.navigateForward('/register');
+
+  async register() {
+    let loading = await this.loadingCtrl.create({
+      message: 'Loading...'
+    });
+    await loading.present();
+
+    this.authService.signUp(this.registerForm.value).then(async res => {
+      await loading.dismiss();
+
+      let toast = await this.toastCtrl.create({
+        duration: 3000,
+        message: 'Successfully created new Account!'
+      });
+      toast.present();
+      console.log('finished: ', res);
+
+      this.navigateByRole(this.registerForm.value['role']);
+
+    }, async err => {
+      await loading.dismiss();
+
+      let alert = await this.alertCtrl.create({
+        header: 'Error',
+        message: err.message,
+        buttons: ['OK']
+      });
+      alert.present();
+    });
   }
- 
+
+  toggleRegister() {
+    this.flipcontainer.nativeElement.classList.toggle('flip');
+  }
+
 }
