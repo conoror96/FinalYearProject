@@ -1,44 +1,92 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>New Account</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <form [formGroup]="registerForm" (ngSubmit)="register()">
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Register login page</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-      <ion-item lines="none">
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
-      </ion-item>
+<ion-content>
 
-      <ion-item lines="none">
-        <ion-label position="stacked">Name</ion-label>
-        <ion-input placeholder="John" formControlName="name"></ion-input>
-      </ion-item>
+  <div class="flip-container" #flipcontainer>
+    <div class="flipper">
+      <div class="front">
+          <ion-card>
+              <ion-card-header>
+                <ion-card-title>Login</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+          
+                  <ion-item lines="none">
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
+                  </ion-item>
+          
+                  <ion-item lines="none">
+                    <ion-label position="stacked">Password</ion-label>
+                    <ion-input type="password" formControlName="password"></ion-input>
+                  </ion-item>
 
-      <ion-item lines="none">
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
+                  <ion-button expand="block" type="submit" color="primary" [disabled]="!loginForm.valid"
+                  class="ion-padding-horizontal ion-margin-vertical">
+                Sign in
+                </ion-button>
+     
+                  <ion-button expand="block" type="button" color="secondary" fill="outline"
+                  class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
+                Create Account
+                </ion-button>
+                </form>
+              </ion-card-content>
+            </ion-card>
+      </div>
 
-      <ion-item lines="none">
-        <ion-label>Select Role</ion-label>
-        <ion-select formControlName="role">
-            <ion-select-option value="BUYER">Buyer</ion-select-option>
-            <ion-select-option value="SELLER">Seller</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <div class="back">
+          <ion-card>
+              <ion-card-header>
+                <ion-card-title>New Account</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <form [formGroup]="registerForm" (ngSubmit)="register()">
+          
+                  <ion-item lines="none">
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
+                  </ion-item>
+          
+                  <ion-item lines="none">
+                    <ion-label position="stacked">Name</ion-label>
+                    <ion-input placeholder="John" formControlName="name"></ion-input>
+                  </ion-item>
+          
+                  <ion-item lines="none">
+                    <ion-label position="stacked">Password</ion-label>
+                    <ion-input type="password" formControlName="password"></ion-input>
+                  </ion-item>
+          
+                  <ion-item lines="none">
+                    <ion-label>Select Role</ion-label>
+                    <ion-select formControlName="role">
+                        <ion-select-option value="BUYER">Buyer</ion-select-option>
+                        <ion-select-option value="SELLER">Seller</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+          
+                  <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
+                  [disabled]="!registerForm.valid">
+                    Register
+                  </ion-button>
 
-      <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
-      [disabled]="!registerForm.valid">
-        Register
-      </ion-button>
+                  <ion-button expand="block" type="button" color="secondary" fill="clear"
+                  class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
+                  <ion-icon name="arrow-back" slot="start"></ion-icon>
+                Back to Login
+                </ion-button>
 
-      <ion-button expand="block" type="button" color="secondary" fill="clear"
-      class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
-      <ion-icon name="arrow-back" slot="start"></ion-icon>
-    Back to Login
-    </ion-button>
+                </form>
+              </ion-card-content>
+            </ion-card>
+      </div>
+    </div>
+  </div>
 
-    </form>
-  </ion-card-content>
-</ion-card>
+</ion-content>
