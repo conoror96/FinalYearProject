@@ -15,6 +15,7 @@ export class CartService {
  
   getCart() {
     return this.cartItems.asObservable();
+    
   }
  
   getCartItemCount() {

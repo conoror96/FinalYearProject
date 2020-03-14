@@ -18,6 +18,7 @@ export class BuyerListDetailsPage implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.productService.getOneProduct(this.id).subscribe(res => {
+      // debugging
       console.log('my product: ', res);
       this.product = res;
       this.product.id = this.id;
@@ -25,11 +26,15 @@ export class BuyerListDetailsPage implements OnInit {
     });
 
     this.cartService.getCart().subscribe(cart => {
+      // debugging
+      console.log('cart: ', cart);
       this.amount = this.cartService.getItemCount(this.id);
     });
   }
 
   addToCart() {
+    // debugging
+    console.log('product added', this.product);
     this.cartService.addProduct(this.product);
   }
 
