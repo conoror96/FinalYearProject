@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@ionic-native/camera": "^5.22.0",
     "@ionic-native/card-io": "^5.20.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/in-app-browser": "^5.20.0",
@@ -32,6 +33,7 @@
     "com.paypal.cordova.mobilesdk": "^3.5.0",
     "cordova-android": "8.1.0",
     "cordova-ios": "4.5.5",
+    "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-inappbrowser": "^3.2.0",
     "core-js": "^2.5.4",
     "firebase": "^7.7.0",
@@ -88,7 +90,8 @@
         "NFC_USAGE_DESCRIPTION": "Read NFC Tags"
       },
       "cordova-plugin-inappbrowser": {},
-      "com.paypal.cordova.mobilesdk": {}
+      "com.paypal.cordova.mobilesdk": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "android",

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-seller-list',
@@ -7,14 +9,21 @@ import { AuthService } from './../../services/auth.service';
   styleUrls: ['./seller-list.page.scss'],
 })
 export class SellerListPage implements OnInit {
+  products: Observable<any>;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private productService: ProductService) { }
 
   ngOnInit() {
+    this.products = this.productService.getSellerProducts();
   }
 
-  // sign out function
+  delete(id) {
+    this.productService.deleteProduct(id);
+  }
+
   signOut() {
     this.auth.signOut();
   }
+
 }
+

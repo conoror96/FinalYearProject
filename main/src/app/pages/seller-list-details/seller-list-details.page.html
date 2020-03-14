@@ -6,28 +6,34 @@
     <ion-title>Create Product</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
 
+<ion-content>
   <form [formGroup]="productForm" (ngSubmit)="createProduct()">
 
-    <!-- Image item to go here -->
+    <div class="product-image ion-text-center">
+      <img [src]="productImageBase64" *ngIf="productImageBase64">
+      <ion-button type="button" expand="full" fill="clear" (click)="selectImage()">
+        Select product image
+      </ion-button>
+    </div>
+
     <ion-item>
         <ion-label position="stacked">Name</ion-label>
         <ion-input formControlName="name"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Price</ion-label>
-      <ion-input formControlName="price"></ion-input>
-  </ion-item>
-  <ion-item>
-      <ion-label position="stacked">Desccription</ion-label>
-      <ion-textarea rows="6" formControlName="desc"></ion-textarea>
-  </ion-item>
+        <ion-label position="stacked">Price</ion-label>
+        <ion-input formControlName="price"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Desccription</ion-label>
+        <ion-textarea rows="6" formControlName="desc"></ion-textarea>
+    </ion-item>
 
-  <ion-button type="submit" expand="block" class="ion-padding-horizontal ion-margin-vertical"
-  [disabled]="!productForm.valid">
-    Save Product
-  </ion-button>
-</form>
+    <ion-button type="submit" expand="block" class="ion-padding-horizontal ion-margin-vertical"
+    [disabled]="!productForm.valid">
+      Save Product
+    </ion-button>
+  </form>
 
 </ion-content>

@@ -1,0 +1,19 @@
+.product-image {
+  height: 200px;
+  background: #ececec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ion-button {
+    display: contents;
+  }
+
+  img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 200px;
+    width: auto;
+    object-fit: contain;
+  }
+}

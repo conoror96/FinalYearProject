@@ -10,5 +10,24 @@
 </ion-header>
 
 <ion-content>
+<ion-list>
+  <ion-item *ngFor="let p of products | async">
+    <ion-thumbnail slot="start">
+      <img [src]="p.img">
+    </ion-thumbnail>
+    <ion-label>
+      {{ p.name }}
+      <p>{{ p.price | currency:'USD' }}</p>
+    </ion-label>
+    <ion-button slot="end" fill="clear" (click)="delete(p.id)">
+      <ion-icon name="trash" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>
 
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button routerLink="new">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 </ion-content>
