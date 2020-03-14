@@ -16,13 +16,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore'
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
-
-
-
-
 import { Camera } from '@ionic-native/camera/ngx';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
-import { CartModalPage } from './pages/cart-modal/cart-modal.page';
 
 class CameraMock extends Camera {
   getPicture(options) {

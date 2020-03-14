@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/buyer-list/buyer-list.module').then( m => m.BuyerListPageModule)
       },
       {
-        path: 'list/new',
+        path: 'list/:id',
         loadChildren: () => import('./pages/buyer-list-details/buyer-list-details.module').then( m => m.BuyerListDetailsPageModule)
       },
       {
@@ -48,7 +48,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/seller-list/seller-list.module').then( m => m.SellerListPageModule)
       },
       {
-        path: 'list/:id',
+        path: 'list/new',
         loadChildren: () => import('./pages/seller-list-details/seller-list-details.module').then( m => m.SellerListDetailsPageModule)
       },
       {
