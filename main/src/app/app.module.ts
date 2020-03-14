@@ -21,7 +21,8 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
 
 import { Camera } from '@ionic-native/camera/ngx';
-//import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
+import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
+import { CartModalPage } from './pages/cart-modal/cart-modal.page';
 
 class CameraMock extends Camera {
   getPicture(options) {
@@ -39,7 +40,7 @@ class CameraMock extends Camera {
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,AngularFireAuthModule, AngularFireStorageModule,  
-    AngularFireAuthGuardModule ],
+    AngularFireAuthGuardModule, CartModalPageModule ],
   providers: [
     StatusBar,
     SplashScreen,

@@ -1,9 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>buyerListDetails</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/buyer/list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ product?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-card *ngIf="product">
+    <img [src]="product.img">
+    <ion-card-header>
+      <ion-card-title>{{ product.name }}</ion-card-title>
+      <ion-card-subtitle>{{ product.price | currency:'USD' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4" class="ion-text-center">
+          <ion-button fill="clear" (click)="removeFromCart()" [disabled]="amount == 0">
+            <ion-icon name="remove" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          {{ amount }}
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+            <ion-button fill="clear" (click)="addToCart()">
+                <ion-icon name="add" slot="icon-only"></ion-icon>
+              </ion-button>
+        </ion-col>
+      </ion-row>
+
+
+      <div [innerHtml]="product.desc"></div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

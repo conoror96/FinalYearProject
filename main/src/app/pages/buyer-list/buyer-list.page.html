@@ -10,5 +10,23 @@
 </ion-header>
 
 <ion-content>
+<ion-fab vertical="top" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="openCart()">
+    <div class="cart-length">{{ cartItemCount | async }}</div>
+    <ion-icon name="cart" class="cart-icon"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+    <ion-list>
+        <ion-item *ngFor="let p of products | async" [routerLink]="[p.id]">
+          <ion-thumbnail slot="start">
+            <img [src]="p.img">
+          </ion-thumbnail>
+          <ion-label>
+            {{ p.name }}
+            <p>{{ p.price | currency:'USD' }}</p>
+          </ion-label>
+        
+        </ion-item>
+      </ion-list>
 
 </ion-content>
