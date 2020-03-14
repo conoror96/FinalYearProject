@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
     });
   }
 
+  // function to go to the correct page depending on user role
   navigateByRole(role) {
     if (role == 'BUYER') {
       this.router.navigateByUrl('/buyer');

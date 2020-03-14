@@ -24,6 +24,7 @@ export class AuthService {
     )
   }
 
+  // sign in method
   signIn(credentials): Observable<any> {
     return from(this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)).pipe(
       switchMap(user => {
@@ -37,6 +38,7 @@ export class AuthService {
     )
   }
 
+  // sign up method
   signUp(credentials) {
     return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password).then(data => {
       console.log('after register: ', data);

@@ -15,6 +15,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AuthenticateService } from './services/authentication.service';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore'
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
 import * as firebase from 'firebase';
 firebase.initializeApp(environment.firebase);
@@ -24,7 +25,7 @@ firebase.initializeApp(environment.firebase);
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,AngularFireAuthModule,AngularFireStorageModule ],
+    AngularFirestoreModule,AngularFireAuthModule,AngularFireStorageModule,  AngularFireAuthGuardModule ],
   providers: [
     StatusBar,
     SplashScreen,
