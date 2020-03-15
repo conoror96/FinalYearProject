@@ -61,6 +61,14 @@ const routes: Routes = [
   {
     path: 'cart-modal',
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'nfc',
+    loadChildren: () => import('./pages/nfc/nfc.module').then( m => m.NfcPageModule)
   }
   
 ]; 
