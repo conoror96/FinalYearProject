@@ -1,0 +1,13 @@
+  .StripeElement {
+    padding: 20px 20px;
+  }
+   
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+   
+  #card-errors {
+    text-align: center;
+    color: var(--ion-color-danger);
+    margin: 10px;
+  }

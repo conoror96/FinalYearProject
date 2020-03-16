@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-modal',
@@ -10,7 +11,8 @@ import { ModalController } from '@ionic/angular';
 export class CartModalPage implements OnInit {
   cart = [];
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController) { }
+  constructor(private cartService: CartService, private modalCtrl: ModalController,
+    private router: Router) { }
 
   ngOnInit() {
     this.cartService.getCart().subscribe(res => {
@@ -26,7 +28,7 @@ export class CartModalPage implements OnInit {
     this.cartService.addProduct(product);
   }
  
-  removeCartItem(product) {
+  removeCartItem(product) { 
     this.cartService.removeProduct(product);
   }
 
@@ -36,6 +38,11 @@ export class CartModalPage implements OnInit {
 
   close() {
     this.modalCtrl.dismiss();
+  }
+
+  checkout(){
+    this.modalCtrl.dismiss();
+    this.router.navigateByUrl('/buyer/checkout');
   }
 
 }
