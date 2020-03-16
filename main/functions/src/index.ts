@@ -25,4 +25,4 @@ export const createStripeCustomer = functions.auth.user().onCreate(async (snap, 
   batch.set(cusRef, { user: snap.uid });
  
   return batch.commit();
-});
+}); 
