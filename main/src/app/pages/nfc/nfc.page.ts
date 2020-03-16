@@ -29,6 +29,7 @@ export class NfcPage {
   //id2 = null;
   product = null;  
   amount = 0;
+  
   constructor(private route: ActivatedRoute, private nfc: NFC, private ndef: Ndef, private alertController: AlertController,
     private productService: ProductService, 
     private cartService: CartService,
@@ -47,10 +48,17 @@ export class NfcPage {
       });
     }
     
+    /*this.myListener = this.nfc.addNdefListener(() => {
+      console.log('successfully attached ndef listener');
+      }, (err) => {
+      console.log('error attaching ndef listener', err);
+      }).subscribe((event) => {
+    
+      });*/
 
   readNFC() {
     this.nfc.addNdefListener(() => {
-      this.presentAlert('ok');
+      this.presentAlert('Tap an NFC tag');
     }, (err) => {
       this.presentAlert('ko' + err);
     }).subscribe((event) => {
@@ -59,19 +67,28 @@ export class NfcPage {
 
       //this.presentAlert('This message contains' + event.tag + ' ' + this.nfc.bytesToHexString(event.tag.id));
       if (this.nfc.bytesToHexString(event.tag.id) == "049a1092285e80"){
-        this.presentAlert('Item Added to basket');
+        //this.presentAlert('Item Added to basket');
         this.cartService.addProduct(this.product);
-        
+        //remove listener
+
         this.presentAlert('Item Added to basket');
+        
         }
+
+        
+
+        
       
       
       else {
         this.presentAlert('Incorrect tag read');
       }
+      
     });
 
-  }
+    
+
+  }unsuscribe;
 
   
 
@@ -94,10 +111,11 @@ export class NfcPage {
 
   }*/
 
+  
 
   async presentAlert(mess) {
     const alert = await this.alertController.create({
-      header: 'Attention',
+      header: 'Alert',
       message: mess,
       buttons: ['OK', 'Cancel']
      
