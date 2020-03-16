@@ -2,13 +2,23 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
        <ion-back-button defaultHref="/"></ion-back-button>
+       <ion-button [routerLink]="['/home']">Home</ion-button>
     </ion-buttons>
     <ion-title>nfc</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="secondary">
-  <ion-button shape="round" (click)="onDoneClicked()" expand="block"
-  style="height: 70%; width: 90%; margin: 25% auto auto;font-size: 50px">READ
-</ion-button>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()">
+      <div class="cart-length">{{ cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+    </ion-fab>
+
+  <ion-button shape="round" (click) ="readNFC()" expand="block"
+  style="height: 30%; width: 75%; margin: 10% auto auto;font-size: 50px">Read</ion-button>
+  
+  <!--<ion-button shape="round" (click)="writeNFC()" expand="block"
+  style="height: 30%; width: 75%; margin: 10% auto auto;font-size: 50px">Write</ion-button> -->
 </ion-content>

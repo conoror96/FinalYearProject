@@ -1,136 +1,118 @@
-import { Component, OnInit } from '@angular/core';
-import { NfcServiceService } from '../../services/nfc-service.service';
-import { Observable, Subscription } from 'rxjs';
-import { NdefEvent } from '@ionic-native/nfc';
-import { NFC } from '@ionic-native/nfc/ngx';
-import { AlertController, LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+//import { Component, OnInit } from '@angular/core';
+//import { NfcServiceService } from '../../services/nfc-service.service';
+//import { Observable, Subscription } from 'rxjs';
+//import { NdefEvent } from '@ionic-native/nfc';
+//import { NFC } from '@ionic-native/nfc/ngx';
+//import { AlertController, LoadingController } from '@ionic/angular';
+//import { Router } from '@angular/router';
 //import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
+import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { Observable, BehaviorSubject } from 'rxjs';
 
+import { Component } from '@angular/core';
+import { Ndef, NFC} from '@ionic-native/nfc/ngx';
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-nfc',
   templateUrl: './nfc.page.html',
   styleUrls: ['./nfc.page.scss'],
 })
-export class NfcPage implements OnInit {
-  loading: HTMLIonLoadingElement;
-  listenAlert: HTMLIonAlertElement;
-
-  existingObservable = false;
-  ndefEventObservable: Observable<NdefEvent>;
-  nfcSubscription: Subscription;
-
-  constructor(private db: NfcServiceService,
-    private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController,
-    private nfc: NFC,
-    private databaseService: NfcServiceService,
-    private router: Router,
-    /*private iab: InAppBrowser*/) {
-}
+export class NfcPage {
+  products: Observable<any>;
+  cartItemCount: BehaviorSubject<number> = this.cartService.getCartItemCount();
+  id = null;
+  //id2 = null;
+  product = null;  
+  amount = 0;
+  constructor(private route: ActivatedRoute, private nfc: NFC, private ndef: Ndef, private alertController: AlertController,
+    private productService: ProductService, 
+    private cartService: CartService,
+    private modalCtrl: ModalController) { }
 
 
-
-ngOnInit(): void {
-  }
-
-
-  onDoneClicked() {
-    this.setupNFC();
-  }
-
-  async setupNFC() {
-    this.loading = await this.loadingCtrl.create();
-    await this.loading.present();
-
-    this.setNdefListener()
-      .then(() => {
-        return this.setNdefSubscription();
-      })
-      .then(() => {
-        this.loading.dismiss();
-        this.setReadNfcAlert();
-      })
-      .catch(() => {
-        this.loading.dismiss();
-        this.alertNfcUnavailable();
+    ngOnInit() {
+      this.products = this.productService.getAllProducts();
+      this.id = "5QFERHsRNuTsNbYU3aac";
+      this.productService.getOneProduct(this.id).subscribe(res => {
+        // debugging
+        console.log('my product: ', res);
+        this.product = res;
+        //this.product.id = this.id;
+        this.amount = this.cartService.getItemCount(this.id);
       });
-  }
+    }
+    
 
-  setNdefListener(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      this.nfc.enabled()
-        .then(() => {
-          if (!this.existingObservable) {
-            this.ndefEventObservable = this.nfc.addNdefListener();
-            this.existingObservable = true;
-            resolve();
-          } else {
-            resolve();
-          }
-        })
-        .catch(() => {
-          this.existingObservable = false;
-          reject(new Error());
-        });
-    });
-  }
+  readNFC() {
+    this.nfc.addNdefListener(() => {
+      this.presentAlert('ok');
+    }, (err) => {
+      this.presentAlert('ko' + err);
+    }).subscribe((event) => {
+      console.log(event);
+      console.log(JSON.stringify(event));
 
-  private setNdefSubscription(): Promise<void> {
-    return new Promise<void>((resolve) => {
-      this.nfcSubscription = this.ndefEventObservable.subscribe((event) => {
-        this.onNdefEvent(event);
-      });
-      resolve();
-    });
-  }
-
-
-  private onNdefEvent(event) {
-    this.listenAlert.dismiss();
-
-    // Read from register 1
-    let payload = this.nfc.bytesToString(event.tag.ndefMessage[1].payload);
-    payload = payload.substring(3);
-
-    /*this.databaseService.getLink(payload)
-      .then(link => {
-        this.iab.create(link);
-      });*/
-  }
-
-  private async setReadNfcAlert() {
-    this.listenAlert = await this.alertCtrl.create({
-      message: 'Please approach your phone to the NFC tag',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
-            this.nfcSubscription.unsubscribe();
-          }
+      //this.presentAlert('This message contains' + event.tag + ' ' + this.nfc.bytesToHexString(event.tag.id));
+      if (this.nfc.bytesToHexString(event.tag.id) == "049a1092285e80"){
+        this.presentAlert('Item Added to basket');
+        this.cartService.addProduct(this.product);
+        
+        this.presentAlert('Item Added to basket');
         }
-      ]
+      
+      
+      else {
+        this.presentAlert('Incorrect tag read');
+      }
     });
-    await this.listenAlert.present();
-    await this.listenAlert.onDidDismiss().then(() => {
-      this.nfcSubscription.unsubscribe();
-    });
+
   }
 
-  private alertNfcUnavailable() {
-    this.alertCtrl.create({
-      message: 'Please enable NFC first',
-      buttons: [
-        {
-          text: 'Okay',
-          role: 'cancel'
-        }
-      ]
-    }).then(alertEl => {
-      alertEl.present();
+  
+
+  /*writeNFC() {
+    this.nfc.addNdefListener(() => {
+      console.log('successfully attached ndef listener');
+      const message = this.ndef.textRecord('Hello world');
+      this.nfc.share([message]).then(
+          value => {
+            this.presentAlert('ok');
+          }
+      ).catch(
+          reason => {
+            this.presentAlert('ko');
+          }
+      );
+    }, (err) => {
+      this.presentAlert('ko' + err);
     });
+
+  }*/
+
+
+  async presentAlert(mess) {
+    const alert = await this.alertController.create({
+      header: 'Attention',
+      message: mess,
+      buttons: ['OK', 'Cancel']
+     
+    });
+
+    await alert.present();
   }
 
-}
+  async openCart() {
+    const modal = await this.modalCtrl.create({
+      component: CartModalPage,
+      cssClass: 'cart-modal'
+    });
+    modal.present();
+  }
 
+
+  }

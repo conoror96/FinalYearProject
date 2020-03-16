@@ -10,6 +10,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class BuyerListDetailsPage implements OnInit {
   id = null;
+  
   product = null;
   amount = 0;
 

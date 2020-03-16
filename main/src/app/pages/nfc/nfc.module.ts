@@ -9,7 +9,7 @@ import { NfcPageRoutingModule } from './nfc-routing.module';
 
 import { NfcPage } from './nfc.page';
 
-import {NFC} from '@ionic-native/nfc/ngx';
+import { Ndef, NFC} from '@ionic-native/nfc/ngx';
 
 @NgModule({
   imports: [
@@ -19,6 +19,6 @@ import {NFC} from '@ionic-native/nfc/ngx';
     NfcPageRoutingModule
   ],
   declarations: [NfcPage],
-  providers: [NFC]
+  providers: [NFC, Ndef]
 })
 export class NfcPageModule {}
