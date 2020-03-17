@@ -56,4 +56,8 @@ export class AuthService {
       this.navCtrl.navigateRoot('/');
     });
   }
+
+  getEmail() {
+    return this.afAuth.auth.currentUser.email;
+  }
 }
