@@ -66,6 +66,16 @@ export class CheckoutPage implements OnInit {
   }
  
   async buyNow() {
-   
+    const items = this.cart.map(item => {
+      return { id: item.id, amount: item.amount };
+    });
+
+    this.productService
+      .startPaymentIntent(this.getTotal() * 100, items)
+      .subscribe(async paymentIntent => {
+        console.log("my payment intent: ", paymentIntent);
+      
+      })
+      
   }
 }

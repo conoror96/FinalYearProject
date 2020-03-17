@@ -27,6 +27,7 @@ export const createStripeCustomer = functions.auth.user().onCreate(async (snap, 
   return batch.commit();
 }); 
 
+// payment intent
 export const startPaymentIntent = functions.https.onCall(
   async(data, context) => {
     console.log('called: ', data);

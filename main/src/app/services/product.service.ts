@@ -67,6 +67,13 @@ export class ProductService {
     this.storage.ref(`products/${id}`).delete().subscribe(res => {});
   }
 
+  // payment intent
+  startPaymentIntent(amount, items) {
+    const callable = this.functions.httpsCallable('startPaymentIntent');
+    const obs = callable({ userId: this.afAuth.auth.currentUser.uid, amount, items});
+    return obs;
+  }
+
 
 
 }
