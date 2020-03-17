@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
+  <ion-toolbar color="dark">
+    <ion-buttons  color="light" slot="start">
       <ion-button (click)="signOut()">
         <ion-icon slot="icon-only" name="log-out"></ion-icon>
       </ion-button>
@@ -10,24 +10,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="medium">
 <ion-list>
-  <ion-item *ngFor="let p of products | async">
-    <ion-thumbnail slot="start">
+  <ion-item color="medium" *ngFor="let p of products | async">
+    <ion-thumbnail color="medium" slot="start">
       <img [src]="p.img">
     </ion-thumbnail>
     <ion-label>
       {{ p.name }}
       <p>{{ p.price | currency:'USD' }}</p>
     </ion-label>
-    <ion-button slot="end" fill="clear" (click)="delete(p.id)">
+    <ion-button color="dark" slot="end" fill="clear" (click)="delete(p.id)">
       <ion-icon name="trash" slot="icon-only"></ion-icon>
     </ion-button>
   </ion-item>
 </ion-list>
 
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button routerLink="new">
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" color="dark">
+  <ion-fab-button color="dark" routerLink="new">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
