@@ -3,6 +3,7 @@ import * as admin from 'firebase-admin';
 import Stripe from 'stripe';
  
 admin.initializeApp();
+const endpointSecret = functions.config().stripe.signing;
  
 const secret = functions.config().stripe.testkey;
 const stripe = new Stripe(secret, {
@@ -56,3 +57,53 @@ export const startPaymentIntent = functions.https.onCall(
     }
   }
 );
+
+export const webhook = functions.https.onRequest(async (request, response) => {
+  const sig = request.headers['stripe-signature'] || '';
+
+  let event = null;
+
+  try {
+    event = stripe.webhooks.constructEvent(
+      request.rawBody,
+      sig,
+      endpointSecret
+    );
+  } catch (err) {
+    // invalid signature
+    response.status(400).end();
+    return;
+  }
+
+  let intent: any = null;
+  let status = 'Succeeded';
+
+  switch (event['type']) {
+    case 'payment_intent.succeeded':
+      intent = event.data.object;
+      break;
+    case 'payment_intent.payment_failed':
+      intent = event.data.object;
+      status = 'Payment failed';
+      break;
+  }
+
+  if (intent) {
+    try {
+      const invoiceUrl = intent.charges.data[0].receipt_url;
+      console.log('invoice: ', invoiceUrl);
+      await admin
+        .firestore()
+        .collection('orders')
+        .doc(intent.id)
+        .update({
+          status,
+          invoice: invoiceUrl
+        });
+    } catch (e) {
+      console.log('Error while getting invoice: ', e);
+    }
+  }
+
+  response.sendStatus(200);
+});
