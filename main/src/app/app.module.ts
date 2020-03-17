@@ -15,6 +15,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore'
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { AngularFireFunctionsModule, FUNCTIONS_REGION } from '@angular/fire/functions';
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
@@ -40,13 +41,15 @@ export class CameraMock extends Camera {
     AngularFireAuthModule, 
     AngularFireStorageModule,  
     AngularFireAuthGuardModule, 
-    CartModalPageModule ],
+    CartModalPageModule,
+    AngularFireFunctionsModule ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {} },
-    { provide: Camera, useClass: CameraMock}
+    { provide: Camera, useClass: CameraMock},
+    { provide: FUNCTIONS_REGION, useValue: 'us-central1' },
   ],
   bootstrap: [AppComponent]
 })

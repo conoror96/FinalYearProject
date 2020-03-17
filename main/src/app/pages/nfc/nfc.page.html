@@ -16,8 +16,13 @@
     </ion-fab-button>
     </ion-fab>
 
-  <ion-button shape="round" (click) ="readNFC()" expand="block"
-  style="height: 30%; width: 75%; margin: 10% auto auto;font-size: 50px">Read</ion-button>
+  <!-- <ion-button shape="round" (click) ="readNFC()" expand="block"
+  style="height: 30%; width: 75%; margin: 10% auto auto;font-size: 50px">Read</ion-button> -->
+
+  <ion-content color="secondary">
+    <ion-button shape="round" (click)="onDoneClicked()" expand="block"
+    style="height: 70%; width: 90%; margin: 25% auto auto;font-size: 50px">READ
+  </ion-button>
   
   <!--<ion-button shape="round" (click)="writeNFC()" expand="block"
   style="height: 30%; width: 75%; margin: 10% auto auto;font-size: 50px">Write</ion-button> -->

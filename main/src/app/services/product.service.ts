@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireFunctions } from '@angular/fire/functions';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +10,8 @@ import { map } from 'rxjs/operators';
 })
 export class ProductService {
 
-  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage) { }
+  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage,
+    private functions: AngularFireFunctions) { }
 
   getAllProducts() {
     return this.db.collection('products').snapshotChanges().pipe(
@@ -64,4 +66,7 @@ export class ProductService {
     this.db.doc(`products/${id}`).delete();
     this.storage.ref(`products/${id}`).delete().subscribe(res => {});
   }
+
+
+
 }

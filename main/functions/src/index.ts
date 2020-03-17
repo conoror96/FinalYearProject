@@ -26,3 +26,32 @@ export const createStripeCustomer = functions.auth.user().onCreate(async (snap, 
  
   return batch.commit();
 }); 
+
+export const startPaymentIntent = functions.https.onCall(
+  async(data, context) => {
+    console.log('called: ', data);
+    const user = await admin.firestore().collection('users').doc(data.userId).get();
+    const userData = user.data();
+    console.log('the user: ', userData);
+    
+    if (userData) {
+      const intent = await stripe.paymentIntents.create({
+        amount: data.amount,
+        currency: 'USD',
+        customer: userData.customerId
+      });
+
+      await admin.firestore().collection('orders').doc(intent.id).set({
+        items: data.items,
+        status: 'Waiting for payment',
+        amount: data.amount / 100,
+        customerId: userData.customerId,
+        userId: data.userId
+      });
+
+      return intent;
+    } else {
+      return false;
+    }
+  }
+);
