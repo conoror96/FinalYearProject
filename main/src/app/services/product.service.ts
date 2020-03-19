@@ -74,10 +74,14 @@ export class ProductService {
     return obs;
   }
 
-  getCusomterOrders() {
+  getCustomerOrders() {
     const callable = this.functions.httpsCallable('getCustomerOrders');
     const obs = callable({ userId: this.afAuth.auth.currentUser.uid });
     return obs;
+  }
+
+  getOrderData(paymentIntentId) {
+    return this.db.doc(`orders/${paymentIntentId}`).valueChanges();
   }
 
 }

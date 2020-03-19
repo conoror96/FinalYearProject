@@ -17,6 +17,8 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { AngularFireFunctionsModule, FUNCTIONS_REGION } from '@angular/fire/functions';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 import { Camera } from '@ionic-native/camera/ngx';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
 
@@ -50,6 +52,7 @@ export class CameraMock extends Camera {
     { provide: FirestoreSettingsToken, useValue: {} },
     { provide: Camera, useClass: CameraMock},
     { provide: FUNCTIONS_REGION, useValue: 'us-central1' },
+    InAppBrowser
   ],
   bootstrap: [AppComponent]
 })
