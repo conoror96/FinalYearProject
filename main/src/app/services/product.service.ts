@@ -74,6 +74,10 @@ export class ProductService {
     return obs;
   }
 
-
+  getCusomterOrders() {
+    const callable = this.functions.httpsCallable('getCustomerOrders');
+    const obs = callable({ userId: this.afAuth.auth.currentUser.uid });
+    return obs;
+  }
 
 }

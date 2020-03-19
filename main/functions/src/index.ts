@@ -107,3 +107,19 @@ export const webhook = functions.https.onRequest(async (request, response) => {
 
   response.sendStatus(200);
 });
+
+export const getCustomerOrders = functions.https.onCall(
+  async (data, context) => {
+    const user = await admin
+      .firestore()
+      .collection(`users`)
+      .doc(data.userId)
+      .get();
+    const userData = user.data();
+    if (userData) {
+      return stripe.paymentIntents.list({ customer: userData.customerId });
+    } else {
+      return null;
+    }
+  }
+);

@@ -33,6 +33,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/checkout/checkout.module').then( m => m.CheckoutPageModule)
       },
       {
+        path: 'orders',
+        loadChildren: () => import('./pages/buyer-orders/buyer-orders.module').then( m => m.BuyerOrdersPageModule)
+      },
+      {
         path: '',
         redirectTo: 'list',
         pathMatch: 'full'
