@@ -4,6 +4,9 @@
       <ion-button (click)="signOut()">
         <ion-icon slot="icon-only" name="log-out"></ion-icon>
       </ion-button>
+      <!--     -->
+      <ion-button routerLink="/buyer/category">Categories</ion-button>
+      <!--      -->
       <ion-button [routerLink]="['/home']">Home</ion-button>
     </ion-buttons>
     <ion-title>Buy products</ion-title>
@@ -16,6 +19,8 @@
 </ion-header>
 
 <ion-content>
+
+
 <ion-fab vertical="top" horizontal="end" slot="fixed">
   <ion-fab-button (click)="openCart()">
     <div class="cart-length">{{ cartItemCount | async }}</div>

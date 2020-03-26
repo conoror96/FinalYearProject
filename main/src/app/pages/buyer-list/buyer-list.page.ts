@@ -5,6 +5,9 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { MenuController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-buyer-list',
@@ -16,7 +19,9 @@ export class BuyerListPage implements OnInit {
   cartItemCount: BehaviorSubject<number> = this.cartService.getCartItemCount();
 
   constructor(private auth: AuthService, private productService: ProductService, 
-    private cartService: CartService, private modalCtrl: ModalController) { }
+    private cartService: CartService, private modalCtrl: ModalController,
+    private menu: MenuController) { }
+    
 
   ngOnInit() {
     this.products = this.productService.getAllProducts();

@@ -5,11 +5,11 @@ import { SellerListPage } from './seller-list.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', 
     component: SellerListPage
   }
 ];
-
+  
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

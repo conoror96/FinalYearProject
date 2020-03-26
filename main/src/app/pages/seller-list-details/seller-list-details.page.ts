@@ -22,6 +22,7 @@ export class SellerListDetailsPage implements OnInit {
       name: ['', Validators.required],
       price: ['', Validators.required],
       desc: ['', Validators.required],
+      category: ['', Validators.required],
       img: ''
     })
   }

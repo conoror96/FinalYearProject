@@ -122,6 +122,26 @@ ngOnInit() {
     }
   }
 
+// writing to tag
+writeNFC() {
+  this.nfc.addNdefListener(() => {
+    console.log('successfully attached ndef listener');
+    const message = this.ndef.textRecord('Hello world');
+    this.nfc.share([message]).then(
+        value => {
+          this.presentAlert('ok');
+        }
+    ).catch(
+        reason => {
+          this.presentAlert('ko');
+        }
+    );
+  }, (err) => {
+    this.presentAlert('ko' + err);
+  });
+
+}
+
   private async setReadNfcAlert() {
     this.listenAlert = await this.alertCtrl.create({
       message: 'Please approach your phone to the NFC tag',
