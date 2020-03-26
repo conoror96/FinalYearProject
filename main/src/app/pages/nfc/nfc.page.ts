@@ -33,6 +33,7 @@ export class NfcPage implements OnInit {
   //id2 = null;
   product = null;  
   amount = 0;
+  tagId = null;
 
   constructor(private db: NfcServiceService,
     private alertCtrl: AlertController,
@@ -49,6 +50,7 @@ export class NfcPage implements OnInit {
 ngOnInit() {
   this.products = this.productService.getAllProducts();
   this.id = this.route.snapshot.paramMap.get('id');
+  this.tagId = this.route.snapshot.paramMap.get('tagid');
   this.productService.getOneProduct(this.id).subscribe(res => {
     // debugging
     console.log('my product: ', res);
@@ -113,14 +115,27 @@ ngOnInit() {
 
   private onNdefEvent(event) {
     this.listenAlert.dismiss();
+    this.presentAlert('Item Added to basket');
+    this.presentAlert("1 " + this.nfc.bytesToHexString(event.tag.id));
+    this.presentAlert("2 " + this.productService.getProductByTag('tagid'));
+    this.presentAlert("3 " + this.product.route.snapshot.paramMap.get('tagid').value == this.nfc.bytesToHexString(event.tag.id));
+    //this.presentAlert(this.product.route.snapshot.paramMap.get('tagid') == "");
+    // debug
+    /*this.presentAlert("1    " + this.nfc.bytesToHexString(event.tag.id) + 
+    "    2     " + this.productService.getProductByTag('tagid') == this.nfc.bytesToHexString(event.tag.id)
+    +  "     3      " + this.product.route.snapshot.paramMap.get('tagid')
+    + "    4      " + this.route.snapshot.paramMap.get('tagid'))
+    + "     5      " + this.product.route.snapshot.paramMap.get('tagid') == "";*/
 
-    if (this.nfc.bytesToHexString(event.tag.id) == this.route.snapshot.paramMap.get('tagid')){
-      this.cartService.addProduct(this.product);
+    // event
+    this.cartService.addProduct(this.product.route.snapshot.paramMap.get('tagid').value == this.nfc.bytesToHexString(event.tag.id));
+   /* if (this.nfc.bytesToHexString(event.tag.id) == this.product.route.snapshot.paramMap.get('tagid')){
+      this.cartService.addProduct(this.product.route.snapshot.paramMap.get('tagid') == this.nfc.bytesToHexString(event.tag.id));
       this.presentAlert('Item Added to basket');
     }
     else {
       this.presentAlert('Incorrect tag read');
-    }
+    }*/
 
     //this.presentAlert('This message contains' + event.tag + ' ' + this.nfc.bytesToHexString(event.tag.id));
   }
