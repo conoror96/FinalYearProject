@@ -8,6 +8,9 @@ import { SellerListDetailsPageRoutingModule } from './seller-list-details-routin
 
 import { SellerListDetailsPage } from './seller-list-details.page';
 
+import { Ndef, NFC} from '@ionic-native/nfc/ngx';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +19,8 @@ import { SellerListDetailsPage } from './seller-list-details.page';
     SellerListDetailsPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [SellerListDetailsPage]
+  declarations: [SellerListDetailsPage],
+  providers: [NFC, Ndef]
 })
 export class SellerListDetailsPageModule {}
 

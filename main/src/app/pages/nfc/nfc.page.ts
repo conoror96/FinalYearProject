@@ -10,6 +10,7 @@ import { CartService } from '../../services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { SellerListDetailsPage } from '../seller-list-details/seller-list-details.page';
 //import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
@@ -47,7 +48,7 @@ export class NfcPage implements OnInit {
 
 ngOnInit() {
   this.products = this.productService.getAllProducts();
-  this.id = "r5UfwNCxyfpnbhQDuHyn";
+  this.id = this.route.snapshot.paramMap.get('id');
   this.productService.getOneProduct(this.id).subscribe(res => {
     // debugging
     console.log('my product: ', res);
@@ -113,13 +114,15 @@ ngOnInit() {
   private onNdefEvent(event) {
     this.listenAlert.dismiss();
 
-    if (this.nfc.bytesToHexString(event.tag.id) == "049a1092285e80"){
+    if (this.nfc.bytesToHexString(event.tag.id) == this.route.snapshot.paramMap.get('tagid')){
       this.cartService.addProduct(this.product);
       this.presentAlert('Item Added to basket');
     }
     else {
       this.presentAlert('Incorrect tag read');
     }
+
+    //this.presentAlert('This message contains' + event.tag + ' ' + this.nfc.bytesToHexString(event.tag.id));
   }
 
 // writing to tag
@@ -129,15 +132,15 @@ writeNFC() {
     const message = this.ndef.textRecord('Hello world');
     this.nfc.share([message]).then(
         value => {
-          this.presentAlert('ok');
+          this.presentAlert('okok');
         }
     ).catch(
         reason => {
-          this.presentAlert('ko');
+          this.presentAlert('ko .catch');
         }
     );
   }, (err) => {
-    this.presentAlert('ko' + err);
+    this.presentAlert('ko error' + err);
   });
 
 }
