@@ -23,9 +23,7 @@ export class ProductService {
     )
   }
 
-  getProductByTag(tagid){
-    return this.db.doc(`products/${tagid}`).valueChanges();
-  }
+ 
 
   getOneProduct(id) {
     return this.db.doc(`products/${id}`).valueChanges();

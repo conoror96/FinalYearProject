@@ -19,6 +19,19 @@
     
   <!-- <ion-button shape="round" (click) ="readNFC()" expand="block"
   style="height: 30%; width: 75%; margin: 10% auto auto;font-size: 50px">Read</ion-button> -->
+  <ion-list>
+    <ion-item *ngFor="let p of products | async" [routerLink]="[p.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="p.img">
+      </ion-thumbnail>
+      <ion-label>
+        {{ p.tagid }}
+        <p>{{ p.price | currency:'USD' }}</p>
+
+      </ion-label>
+    
+    </ion-item>
+  </ion-list>
 
   <ion-content color="secondary">
     <ion-button shape="round" (click)="onDoneClicked()" expand="block"

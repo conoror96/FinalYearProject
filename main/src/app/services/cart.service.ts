@@ -21,7 +21,7 @@ export class CartService {
   getCartItemCount() {
     return this.cartItemCount;
   }
- 
+  
   addProduct(product) {
     let added = false;
     for (let p of this.cart) {
