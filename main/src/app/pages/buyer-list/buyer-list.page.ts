@@ -25,6 +25,7 @@ export class BuyerListPage implements OnInit {
 
   ngOnInit() {
     this.products = this.productService.getAllProducts();
+    
   }
 
   signOut() {

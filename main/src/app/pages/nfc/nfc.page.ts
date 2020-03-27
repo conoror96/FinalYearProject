@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { SellerListDetailsPage } from '../seller-list-details/seller-list-details.page';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 //import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
@@ -33,9 +35,10 @@ export class NfcPage implements OnInit {
   //id2 = null;
   product = null;  
   amount = 0;
+  
   tagId = null;
 
-  constructor(private db: NfcServiceService,
+  constructor(private db1: NfcServiceService,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private databaseService: NfcServiceService,
@@ -43,18 +46,21 @@ export class NfcPage implements OnInit {
     private route: ActivatedRoute, private nfc: NFC, private ndef: Ndef, private alertController: AlertController,
     private productService: ProductService, 
     private cartService: CartService,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController,
+    private db: AngularFirestore) { }
     /*private iab: InAppBrowser*/
 
 
 ngOnInit() {
+  
   this.products = this.productService.getAllProducts();
   //this.id = "04d55792285e80";
   //this.tagId = this.route.snapshot.paramMap.get('tagid');
   this.productService.getOneProduct(this.id).subscribe(res => {
     // debugging
     console.log('my product: ', res);
-    this.product = "PwkPUouXZdJcByzSb3ZL";
+    //this.product = "PwkPUouXZdJcByzSb3ZL";
+    this.product = res;
     //this.product.id = this.id;
     this.amount = this.cartService.getItemCount(this.id);
     console.log(this.product.tagid);
@@ -114,17 +120,26 @@ ngOnInit() {
   }
 
   
+
   private onNdefEvent(event) {
     this.listenAlert.dismiss();
-    this.presentAlert('tagid from tag ' + this.nfc.bytesToHexString(event.tag.id));
-      this.presentAlert('tagid from db' + this.product.tagid);
+    
+   // const tagstore = this.db.collection('products', ref => ref.where('tagid', '==', this.nfc.bytesToHexString(event.tag.id)));
+  
+//this.presentAlert(tagstore);
+
+this.cartService.addProduct(this.product == 
+  this.db.collection('products', ref => ref.where('tagid', '==', 
+  this.nfc.bytesToHexString(event.tag.id))));
+   /* this.presentAlert('tagid from tag ' + this.nfc.bytesToHexString(event.tag.id));
+      this.presentAlert('tagid from db' + this.product.tagid);*/
       
-    if(this.nfc.bytesToHexString(event.tag.id) == this.product.tagid){
+    /*if(this.nfc.bytesToHexString(event.tag.id) == this.product.tagid){
       this.cartService.addProduct(this.product);
      }
      else {
        this.presentAlert("error tag read")
-     }
+     }*/
 
   
   

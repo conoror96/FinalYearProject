@@ -41,6 +41,7 @@ export class BuyerListDetailsPage implements OnInit {
 
   addToCart() {
     // debugging
+   
     console.log('product added', this.product);
     this.cartService.addProduct(this.product);
   }
@@ -52,7 +53,7 @@ export class BuyerListDetailsPage implements OnInit {
   
 
 
-  readNFC() {
+  /*readNFC() {
     this.nfc.addNdefListener(() => {
       this.presentAlert('ok');
     }, (err) => {
@@ -84,6 +85,6 @@ export class BuyerListDetailsPage implements OnInit {
     });
 
     await alert.present();
-  }
+  }*/
 
 }
