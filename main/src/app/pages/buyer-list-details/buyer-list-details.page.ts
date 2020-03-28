@@ -27,6 +27,7 @@ export class BuyerListDetailsPage implements OnInit {
       console.log('my product: ', res);
       this.product = res;
       this.product.id = this.id;
+      console.log("my id ",this.id);
       this.amount = this.cartService.getItemCount(this.id);
       console.log('tag id', this.product.tagid);
       

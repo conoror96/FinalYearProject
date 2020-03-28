@@ -34,8 +34,20 @@ export class ProductService {
 
   getOneProduct(id) {
     return this.db.doc(`products/${id}`).valueChanges();
+    
   }
-
+  getTagProduct(id){
+    return this.db.doc(`products/${id}`).valueChanges();
+  }
+  getTagID() {
+    return this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80")).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    )
+  }
   addProduct(product) {
     product.creator = this.afAuth.auth.currentUser.uid;
     const imageData = product.img;

@@ -15,6 +15,7 @@ export class SellerListPage implements OnInit {
 
   ngOnInit() {
     this.products = this.productService.getSellerProducts();
+    console.log(this.products);
   }
 
   delete(id) {
