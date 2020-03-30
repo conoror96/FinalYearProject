@@ -36,8 +36,8 @@ export class ProductService {
     return this.db.doc(`products/${id}`).valueChanges();
     
   }
-  getTagProduct(id){
-    return this.db.doc(`products/${id}`).valueChanges();
+  getTagProduct(tagid){
+    return this.db.doc(`products/${tagid}`).valueChanges();
   }
   getTagID() {
     return this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80")).snapshotChanges().pipe(

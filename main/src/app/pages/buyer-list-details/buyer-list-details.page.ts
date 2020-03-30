@@ -22,6 +22,7 @@ export class BuyerListDetailsPage implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
+    
     this.productService.getOneProduct(this.id).subscribe(res => {
       // debugging
       console.log('my product: ', res);

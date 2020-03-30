@@ -54,22 +54,14 @@ export class NfcPage implements OnInit {
 
 ngOnInit() {
   
-  this.products = this.productService.getAllProducts();
-  console.log("products", this.products);
-  //this.id = "04d55792285e80";
-  //this.tagId = this.route.snapshot.paramMap.get('tagid');
- 
-  /*this.productService.getTagProduct(this.id).subscribe(res => {
-    console.log('my product id lala', res);
-    this.product = res;
-    this.product.id = this.id; 
-    
-    console.log("my id ",this.id);
-    this.amount = this.cartService.getItemCount(this.id);
-    console.log('tag id', this.product.tagid);
-  })*/
-  this.products = this.productService.getTagID();
-  this.productService.getOneProduct(this.id).subscribe(res => {
+  //this.products = this.productService.getAllProducts();
+  
+  
+  //this.products = this.productService.getTagID();
+  const tagid = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
+  //this.tagid = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
+  console.log("yellow ",tagid);
+  this.productService.getOneProduct(this.tagid).subscribe(res => {
     // debugging
     console.log('my product: ', res);
     this.product = res;
@@ -137,18 +129,17 @@ ngOnInit() {
 
   private onNdefEvent(event) {
   this.listenAlert.dismiss();
- 
-
-  /*this.cartService.addProduct(this.product == 
-  this.db.collection('products', ref => ref.where('tagid', '==', 
-  this.nfc.bytesToHexString(event.tag.id))));*/
 
   this.cartService.addProduct(this.product == 
-    this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80")));
+    this.db.collection('products', ref => ref.where('tagid', '==', this.nfc.bytesToHexString(event.tag.id))));
 
     
   
   }
+
+  /*this.cartService.addProduct(this.product == 
+  this.db.collection('products', ref => ref.where('tagid', '==', 
+  this.nfc.bytesToHexString(event.tag.id))));*/
 
   addToCart() {
     //this.cartService.addProduct(this.product == 
