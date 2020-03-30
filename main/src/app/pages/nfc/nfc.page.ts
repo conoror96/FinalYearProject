@@ -10,6 +10,9 @@ import { CartService } from '../../services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { SellerListDetailsPage } from '../seller-list-details/seller-list-details.page';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 //import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
@@ -27,13 +30,16 @@ export class NfcPage implements OnInit {
   nfcSubscription: Subscription;
 
   products: Observable<any>;
+  products1: Observable<any>;
   cartItemCount: BehaviorSubject<number> = this.cartService.getCartItemCount();
   id = null;
   //id2 = null;
   product = null;  
   amount = 0;
+  
+  tagid = null;
 
-  constructor(private db: NfcServiceService,
+  constructor(private db1: NfcServiceService,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private databaseService: NfcServiceService,
@@ -41,23 +47,33 @@ export class NfcPage implements OnInit {
     private route: ActivatedRoute, private nfc: NFC, private ndef: Ndef, private alertController: AlertController,
     private productService: ProductService, 
     private cartService: CartService,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController,
+    private db: AngularFirestore) { }
     /*private iab: InAppBrowser*/
 
 
 ngOnInit() {
-  this.products = this.productService.getAllProducts();
-  this.id = "r5UfwNCxyfpnbhQDuHyn";
-  this.productService.getOneProduct(this.id).subscribe(res => {
+  
+  //this.products = this.productService.getAllProducts();
+  
+  
+  //this.products = this.productService.getTagID();
+  const tagid = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
+  //this.tagid = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
+  console.log("yellow ",tagid);
+  this.productService.getOneProduct(this.tagid).subscribe(res => {
     // debugging
     console.log('my product: ', res);
     this.product = res;
-    //this.product.id = this.id;
+    this.product.id = this.id; 
+    
+    console.log("my id ",this.id);
     this.amount = this.cartService.getItemCount(this.id);
+    console.log('tag id', this.product.tagid);
   });
 }
 
-
+// loop over all products and check tagids for a match to tagid read by nfc
 
   onDoneClicked() {
     this.setupNFC();
@@ -109,18 +125,57 @@ ngOnInit() {
     });
   }
 
+  
 
   private onNdefEvent(event) {
-    this.listenAlert.dismiss();
+  this.listenAlert.dismiss();
 
-    if (this.nfc.bytesToHexString(event.tag.id) == "049a1092285e80"){
-      this.cartService.addProduct(this.product);
-      this.presentAlert('Item Added to basket');
-    }
-    else {
-      this.presentAlert('Incorrect tag read');
-    }
+  this.cartService.addProduct(this.product == 
+    this.db.collection('products', ref => ref.where('tagid', '==', this.nfc.bytesToHexString(event.tag.id))));
+
+    
+  
   }
+
+  /*this.cartService.addProduct(this.product == 
+  this.db.collection('products', ref => ref.where('tagid', '==', 
+  this.nfc.bytesToHexString(event.tag.id))));*/
+
+  addToCart() {
+    //this.cartService.addProduct(this.product == 
+      //const taggy db.collection('products', where('tagid', '==', "049a1092285e80"));
+      // const productDoc = db.collection('products').where('tagid', '==', event.tag.id);
+      /*const taggy = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
+
+      console.log(taggy);*/
+
+      // Create a reference to the cities collection
+      this.cartService.addProduct(this.product);
+      console.log("tag  ", this.products1);
+
+
+
+  }
+
+// writing to tag
+writeNFC() {
+  this.nfc.addNdefListener(() => {
+    console.log('successfully attached ndef listener');
+    const message = this.ndef.textRecord('Hello world');
+    this.nfc.share([message]).then(
+        value => {
+          this.presentAlert('okok');
+        }
+    ).catch(
+        reason => {
+          this.presentAlert('ko .catch');
+        }
+    );
+  }, (err) => {
+    this.presentAlert('ko error' + err);
+  });
+
+}
 
   private async setReadNfcAlert() {
     this.listenAlert = await this.alertCtrl.create({

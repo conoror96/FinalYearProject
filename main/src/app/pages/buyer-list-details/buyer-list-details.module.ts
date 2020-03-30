@@ -8,6 +8,8 @@ import { BuyerListDetailsPageRoutingModule } from './buyer-list-details-routing.
 
 import { BuyerListDetailsPage } from './buyer-list-details.page';
 
+import { Ndef, NFC} from '@ionic-native/nfc/ngx';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ import { BuyerListDetailsPage } from './buyer-list-details.page';
     IonicModule,
     BuyerListDetailsPageRoutingModule
   ],
-  declarations: [BuyerListDetailsPage]
+  declarations: [BuyerListDetailsPage],
+  providers: [Ndef, NFC]
 })
 export class BuyerListDetailsPageModule {}

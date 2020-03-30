@@ -5,13 +5,19 @@ import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/s
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { map } from 'rxjs/operators';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class ProductService {
 
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage,
     private functions: AngularFireFunctions) { }
+
+   
 
   getAllProducts() {
     return this.db.collection('products').snapshotChanges().pipe(
@@ -22,11 +28,26 @@ export class ProductService {
       }))
     )
   }
+  
+  
+  
 
   getOneProduct(id) {
     return this.db.doc(`products/${id}`).valueChanges();
+    
   }
-
+  getTagProduct(tagid){
+    return this.db.doc(`products/${tagid}`).valueChanges();
+  }
+  getTagID() {
+    return this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80")).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    )
+  }
   addProduct(product) {
     product.creator = this.afAuth.auth.currentUser.uid;
     const imageData = product.img;
@@ -63,6 +84,8 @@ export class ProductService {
   }
 
   deleteProduct(id) {
+    const teststore = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
+    console.log("test",teststore);
     this.db.doc(`products/${id}`).delete();
     this.storage.ref(`products/${id}`).delete().subscribe(res => {});
   }

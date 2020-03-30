@@ -36,6 +36,7 @@ const routes: Routes = [
         path: 'orders',
         loadChildren: () => import('./pages/buyer-orders/buyer-orders.module').then( m => m.BuyerOrdersPageModule)
       },
+     
       {
         path: '',
         redirectTo: 'list',
