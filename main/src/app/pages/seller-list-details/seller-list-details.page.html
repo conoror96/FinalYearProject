@@ -32,7 +32,15 @@
         <ion-input formControlName="price"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label position="stacked">Desccription</ion-label>
+      <ion-label position="stacked">Category</ion-label>
+      <form [formGroup]="productForm">
+        <select formControlName="categoryControl">
+          <option [value]="category" *ngFor="let category of categories">{{category}}</option>
+        </select>
+      </form>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
         <ion-textarea rows="6" formControlName="desc"></ion-textarea>
     </ion-item>
 
