@@ -31,6 +31,8 @@ export class SellerListDetailsPage implements OnInit {
     })
   }
 
+  
+
   createProduct() {
     this.productService.addProduct(this.productForm.value).then(res => {
       this.navCtrl.pop();

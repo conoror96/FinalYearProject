@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NfcServiceService } from '../../services/nfc-service.service';
+//import { NfcServiceService } from '../../services/nfc-service.service';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import { NdefEvent } from '@ionic-native/nfc';
 import { NFC, Ndef } from '@ionic-native/nfc/ngx';
@@ -37,12 +37,10 @@ export class NfcPage implements OnInit {
   product = null;  
   amount = 0;
   
-  tagid = null;
-
-  constructor(private db1: NfcServiceService,
+  constructor(//private db1: NfcServiceService,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-    private databaseService: NfcServiceService,
+   // private databaseService: NfcServiceService,
     private router: Router,
     private route: ActivatedRoute, private nfc: NFC, private ndef: Ndef, private alertController: AlertController,
     private productService: ProductService, 
@@ -53,26 +51,43 @@ export class NfcPage implements OnInit {
 
 
 ngOnInit() {
-  
-  //this.products = this.productService.getAllProducts();
-  
-  
-  //this.products = this.productService.getTagID();
-  const tagid = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
-  //this.tagid = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
-  console.log("yellow ",tagid);
-  this.productService.getOneProduct(this.tagid).subscribe(res => {
-    // debugging
-    console.log('my product: ', res);
-    this.product = res;
-    this.product.id = this.id; 
-    
-    console.log("my id ",this.id);
-    this.amount = this.cartService.getItemCount(this.id);
-    console.log('tag id', this.product.tagid);
-  });
-}
+ 
+    // cart service
+      this.cartService.getCart().subscribe(cart => {
+        // debugging
+        console.log('cart: ', cart);
+        this.amount = this.cartService.getItemCount(this.id);
+    });
+  }
 
+
+  addToCart(){
+    this.db.firestore.collection('products')
+    .where('tagid','==', "049e4992285e80")
+    .get()
+    .then(querySnapshot => {
+            querySnapshot.forEach(doc => { this.id = doc.id; }) //{
+              //const id = doc.id;
+              //const data = doc.data;
+             
+                  /*console.log("debug 1  ",doc.id); // id of doc
+                  console.log("debug 2  ", doc.data()); // data of doc
+                  console.log("debug 3", id);*/
+                  //return {id};
+            //}) // end of for each
+
+            // want to make this.id = doc.id 
+            //this.id = doc.id;
+                  this.productService.getOneProduct(this.id).subscribe(res => {
+                  this.product = res;
+                  this.product.id = this.id;
+                  this.amount = this.cartService.getItemCount(this.id);
+                  console.log('tag id', this.product.tagid);
+
+                  this.cartService.addProduct(this.product);
+                });
+     });
+  }
 // loop over all products and check tagids for a match to tagid read by nfc
 
   onDoneClicked() {
@@ -130,8 +145,25 @@ ngOnInit() {
   private onNdefEvent(event) {
   this.listenAlert.dismiss();
 
-  this.cartService.addProduct(this.product == 
-    this.db.collection('products', ref => ref.where('tagid', '==', this.nfc.bytesToHexString(event.tag.id))));
+  this.db.firestore.collection('products')
+  .where('tagid','==', this.nfc.bytesToHexString(event.tag.id))
+  .get()
+  .then(querySnapshot => {
+          querySnapshot.forEach(function (doc) {
+                console.log("debug 1  ",doc.id); // id of doc
+                console.log("debug 2  ", doc.data()); // data of doc
+                //this.id = doc.id;
+                //console.log("debug 3   ", this.id);
+              
+
+
+               // this.cartService.addProduct(this.product, ref => ref.where('id', '==', doc.id));
+          })
+   });
+
+
+  //this.cartService.addProduct(this.product == 
+    //this.db.collection('products', ref => ref.where('tagid', '==', this.nfc.bytesToHexString(event.tag.id))));
 
     
   
@@ -141,21 +173,7 @@ ngOnInit() {
   this.db.collection('products', ref => ref.where('tagid', '==', 
   this.nfc.bytesToHexString(event.tag.id))));*/
 
-  addToCart() {
-    //this.cartService.addProduct(this.product == 
-      //const taggy db.collection('products', where('tagid', '==', "049a1092285e80"));
-      // const productDoc = db.collection('products').where('tagid', '==', event.tag.id);
-      /*const taggy = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
 
-      console.log(taggy);*/
-
-      // Create a reference to the cities collection
-      this.cartService.addProduct(this.product);
-      console.log("tag  ", this.products1);
-
-
-
-  }
 
 // writing to tag
 writeNFC() {

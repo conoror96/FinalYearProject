@@ -25,6 +25,7 @@ export class BuyerListPage implements OnInit {
 
   ngOnInit() {
     this.products = this.productService.getAllProducts();
+    console.log("all products", this.products);
     
   }
 

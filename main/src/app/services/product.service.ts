@@ -3,7 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireFunctions } from '@angular/fire/functions';
-import { map } from 'rxjs/operators';
+import { map, flatMap } from 'rxjs/operators';
+
 
 
 
@@ -13,11 +14,13 @@ import { map } from 'rxjs/operators';
 
 
 export class ProductService {
+ 
 
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage,
     private functions: AngularFireFunctions) { }
 
    
+
 
   getAllProducts() {
     return this.db.collection('products').snapshotChanges().pipe(
@@ -28,6 +31,28 @@ export class ProductService {
       }))
     )
   }
+
+  getTagID(){
+   
+    
+    this.db.firestore.collection('products')
+    .where('tagid','==', "049a1092285e80")
+    .get()
+    .then(querySnapshot => {
+            querySnapshot.forEach(function (doc) {
+              const id = doc.id;
+             
+                  console.log("debug 1  ",doc.id); // id of doc
+                  console.log("debug 2  ", doc.data()); // data of doc
+
+                  console.log("hello", id);
+                  return {id};
+                 
+            })
+     });
+  }
+
+  
   
   
   
@@ -36,22 +61,13 @@ export class ProductService {
     return this.db.doc(`products/${id}`).valueChanges();
     
   }
-  getTagProduct(tagid){
-    return this.db.doc(`products/${tagid}`).valueChanges();
-  }
-  getTagID() {
-    return this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80")).snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data();
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    )
-  }
+  
+  
   addProduct(product) {
     product.creator = this.afAuth.auth.currentUser.uid;
     const imageData = product.img;
     delete product.image;
+    
 
     let documentId = null;
     let storageRef: AngularFireStorageReference = null;
