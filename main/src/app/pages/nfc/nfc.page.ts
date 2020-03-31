@@ -1,20 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-//import { NfcServiceService } from '../../services/nfc-service.service';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import { NdefEvent } from '@ionic-native/nfc';
 import { NFC, Ndef } from '@ionic-native/nfc/ngx';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
-import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
-import { SellerListDetailsPage } from '../seller-list-details/seller-list-details.page';
+
 import { AngularFirestore } from '@angular/fire/firestore';
-
-//import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-
 
 @Component({
   selector: 'app-nfc',
@@ -33,51 +27,33 @@ export class NfcPage implements OnInit {
   products1: Observable<any>;
   cartItemCount: BehaviorSubject<number> = this.cartService.getCartItemCount();
   id = null;
-  //id2 = null;
   product = null;  
   amount = 0;
   
-  constructor(//private db1: NfcServiceService,
+  constructor(
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-   // private databaseService: NfcServiceService,
-    private router: Router,
-    private route: ActivatedRoute, private nfc: NFC, private ndef: Ndef, private alertController: AlertController,
+    private nfc: NFC, private ndef: Ndef, private alertController: AlertController,
     private productService: ProductService, 
     private cartService: CartService,
     private modalCtrl: ModalController,
     private db: AngularFirestore) { }
-    /*private iab: InAppBrowser*/
-
-
+   
 ngOnInit() {
- 
-    // cart service
       this.cartService.getCart().subscribe(cart => {
-        // debugging
         console.log('cart: ', cart);
         this.amount = this.cartService.getItemCount(this.id);
     });
   }
 
 
-  addToCart(){
+ addToCart(){
     this.db.firestore.collection('products')
     .where('tagid','==', "049e4992285e80")
     .get()
     .then(querySnapshot => {
-            querySnapshot.forEach(doc => { this.id = doc.id; }) //{
-              //const id = doc.id;
-              //const data = doc.data;
-             
-                  /*console.log("debug 1  ",doc.id); // id of doc
-                  console.log("debug 2  ", doc.data()); // data of doc
-                  console.log("debug 3", id);*/
-                  //return {id};
-            //}) // end of for each
-
-            // want to make this.id = doc.id 
-            //this.id = doc.id;
+            querySnapshot.forEach(doc => { this.id = doc.id; }) 
+              
                   this.productService.getOneProduct(this.id).subscribe(res => {
                   this.product = res;
                   this.product.id = this.id;
@@ -88,7 +64,6 @@ ngOnInit() {
                 });
      });
   }
-// loop over all products and check tagids for a match to tagid read by nfc
 
   onDoneClicked() {
     this.setupNFC();
@@ -146,54 +121,21 @@ ngOnInit() {
   this.listenAlert.dismiss();
 
   this.db.firestore.collection('products')
-  .where('tagid','==', this.nfc.bytesToHexString(event.tag.id))
-  .get()
-  .then(querySnapshot => {
-          querySnapshot.forEach(function (doc) {
-                console.log("debug 1  ",doc.id); // id of doc
-                console.log("debug 2  ", doc.data()); // data of doc
-                //this.id = doc.id;
-                //console.log("debug 3   ", this.id);
-              
+    .where('tagid','==', this.nfc.bytesToHexString(event.tag.id))
+    .get()
+    .then(querySnapshot => {
+            querySnapshot.forEach(doc => { this.id = doc.id; })
+                  this.productService.getOneProduct(this.id).subscribe(res => {
+                  this.product = res;
+                  this.product.id = this.id;
+                  this.amount = this.cartService.getItemCount(this.id);
+                  console.log('tag id', this.product.tagid);
 
-
-               // this.cartService.addProduct(this.product, ref => ref.where('id', '==', doc.id));
-          })
-   });
-
-
-  //this.cartService.addProduct(this.product == 
-    //this.db.collection('products', ref => ref.where('tagid', '==', this.nfc.bytesToHexString(event.tag.id))));
-
-    
+                  this.cartService.addProduct(this.product);
+                });
+     });
   
   }
-
-  /*this.cartService.addProduct(this.product == 
-  this.db.collection('products', ref => ref.where('tagid', '==', 
-  this.nfc.bytesToHexString(event.tag.id))));*/
-
-
-
-// writing to tag
-writeNFC() {
-  this.nfc.addNdefListener(() => {
-    console.log('successfully attached ndef listener');
-    const message = this.ndef.textRecord('Hello world');
-    this.nfc.share([message]).then(
-        value => {
-          this.presentAlert('okok');
-        }
-    ).catch(
-        reason => {
-          this.presentAlert('ko .catch');
-        }
-    );
-  }, (err) => {
-    this.presentAlert('ko error' + err);
-  });
-
-}
 
   private async setReadNfcAlert() {
     this.listenAlert = await this.alertCtrl.create({
@@ -249,3 +191,4 @@ writeNFC() {
 
 
 }
+  

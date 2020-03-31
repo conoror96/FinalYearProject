@@ -19,8 +19,6 @@ export class ProductService {
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage,
     private functions: AngularFireFunctions) { }
 
-   
-
 
   getAllProducts() {
     return this.db.collection('products').snapshotChanges().pipe(
@@ -31,31 +29,6 @@ export class ProductService {
       }))
     )
   }
-
-  getTagID(){
-   
-    
-    this.db.firestore.collection('products')
-    .where('tagid','==', "049a1092285e80")
-    .get()
-    .then(querySnapshot => {
-            querySnapshot.forEach(function (doc) {
-              const id = doc.id;
-             
-                  console.log("debug 1  ",doc.id); // id of doc
-                  console.log("debug 2  ", doc.data()); // data of doc
-
-                  console.log("hello", id);
-                  return {id};
-                 
-            })
-     });
-  }
-
-  
-  
-  
-  
 
   getOneProduct(id) {
     return this.db.doc(`products/${id}`).valueChanges();
