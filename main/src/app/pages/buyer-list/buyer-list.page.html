@@ -11,6 +11,15 @@
     </ion-buttons>
     <ion-title>Buy products</ion-title>
     <ion-buttons slot="end">
+      <ion-button (click)="filterButton()">
+        <ion-icon slot="icon-only" name="md-options"></ion-icon>
+        <ion-select [(ngModel)]="categorise_by" name="category" placeholder="Filter The Clothing By:">
+          <ion-select-option value="TOP">Top</ion-select-option>
+          <ion-select-option value="DRESS">Dress</ion-select-option>
+          <ion-select-option value="JEANS">Jeans</ion-select-option>
+          <ion-select-option value="SHOES">Shoes</ion-select-option>
+        </ion-select>
+      </ion-button>
       <ion-button routerLink="/buyer/orders">
         <ion-icon slot="icon-only" name="filing"></ion-icon>
       </ion-button>
@@ -19,25 +28,21 @@
 </ion-header>
 
 <ion-content>
-
-
-<ion-fab vertical="top" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="openCart()">
-    <div class="cart-length">{{ cartItemCount | async }}</div>
-    <ion-icon name="cart" class="cart-icon"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
-    <ion-list>
-        <ion-item *ngFor="let p of products | async" [routerLink]="[p.id]">
-          <ion-thumbnail slot="start">
-            <img [src]="p.img">
-          </ion-thumbnail>
-          <ion-label>
-            {{ p.name }}
-            <p>{{ p.price | currency:'USD' }}</p>
-          </ion-label>
-        
-        </ion-item>
-      </ion-list>
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()">
+      <div class="cart-length">{{ cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list>
+    <ion-item *ngFor="let p of products | async" [routerLink]="[p.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="p.img">
+      </ion-thumbnail>
+      <ion-label>
+        {{ p.name }}
+        <p>{{ p.price | currency:'USD' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

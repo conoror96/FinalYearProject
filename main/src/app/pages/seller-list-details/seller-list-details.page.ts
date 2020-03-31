@@ -16,6 +16,8 @@ export class SellerListDetailsPage implements OnInit {
   productForm: FormGroup;
   productImageBase64 = null;
 
+  categories = ['Top', 'Dress', 'Jeans', 'Shoes']
+
   constructor(private fb: FormBuilder, private productService: ProductService, private navCtrl: NavController,
     private camera: Camera,
     private nfc: NFC, private ndef: Ndef, private alertController: AlertController) { }
@@ -24,6 +26,7 @@ export class SellerListDetailsPage implements OnInit {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
+      categoryControl: ['Top'],
       desc: ['', Validators.required],
       category: ['', Validators.required],
       tagid: ['', Validators.required],
