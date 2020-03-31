@@ -125,6 +125,7 @@ ngOnInit() {
     .get()
     .then(querySnapshot => {
             querySnapshot.forEach(doc => { this.id = doc.id; })
+            if(this.nfc.bytesToHexString == this.id){
                   this.productService.getOneProduct(this.id).subscribe(res => {
                   this.product = res;
                   this.product.id = this.id;
@@ -133,6 +134,20 @@ ngOnInit() {
 
                   this.cartService.addProduct(this.product);
                 });
+              }
+              else {
+                this.alertCtrl.create({
+                  message: 'Incorrect Tag Read',
+                  buttons: [
+                    {
+                      text: 'Okay',
+                      role: 'cancel'
+                    }
+                  ]
+                }).then(alertEl => {
+                  alertEl.present();
+                });}
+              
      });
   
   }
