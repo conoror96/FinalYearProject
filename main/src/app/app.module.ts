@@ -21,6 +21,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
+//import { CategoryPipe } from './pipes/category.pipe';
+
 
 /*export class CameraMock extends Camera {
   getPicture(options) {
@@ -41,9 +43,10 @@ import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule, 
-    AngularFireStorageModule,  
-    AngularFireAuthGuardModule, 
+    AngularFireStorageModule, 
+    AngularFireAuthGuardModule,
     CartModalPageModule,
+   
     AngularFireFunctionsModule ],
   providers: [
     StatusBar,

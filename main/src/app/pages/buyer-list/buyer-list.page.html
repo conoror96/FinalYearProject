@@ -30,14 +30,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openCart()">
-      <div class="cart-length">{{ cartItemCount | async }}</div>
-      <ion-icon name="cart" class="cart-icon"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-list>
-    <ion-item *ngFor="let p of products | async" [routerLink]="[p.id]">
+
+  
+   <!--<ion-list>
+    <ion-item *ngFor="let p of products | category.pipe.ts:searchCategory" [routerLink]="[p.id]">
       <ion-thumbnail slot="start">
         <img [src]="p.img">
       </ion-thumbnail>
@@ -46,5 +42,28 @@
         <p>{{ p.price | currency:'USD' }}</p>
       </ion-label>
     </ion-item>
+  </ion-list>-->
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()">
+      <div class="cart-length">{{ cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div style="text-align: center;">
+    <input type="text" [(ngModel)]="searchCategory">
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let p of products | async |category:searchCategory" [routerLink]="[p.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="p.img">
+      </ion-thumbnail>
+      <ion-label>
+        {{ p.name }}
+        <p>{{ p.category}}</p>
+        <p>{{ p.price | currency:'USD' }}</p>
+      </ion-label>
+    </ion-item>
   </ion-list>
-</ion-content>
+</ion-content> 
