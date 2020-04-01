@@ -26,7 +26,7 @@ export class SellerListDetailsPage implements OnInit {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
-      categoryControl: ['Top'],
+      categoryControl: [''],
       desc: '',
       category: '',
       tagid: ['', Validators.required],
