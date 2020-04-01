@@ -9,14 +9,6 @@
 
 <ion-content>
   <form [formGroup]="productForm" (ngSubmit)="createProduct()">
-    <!--
-    <div class="product-image ion-text-center">
-      <img [src]="productImageBase64" *ngIf="productImageBase64">
-      <ion-button type="button" expand="full" fill="clear" (click)="selectImage()">
-        Select product image
-      </ion-button>
-    </div> -->
-
     <div class="product-image ion-text-center">
       <img [src]="productImageBase64" *ngIf="productImageBase64">
       <ion-button type="button" expand="full" fill="clear" (click)="selectImage()">
@@ -50,10 +42,8 @@
 <ion-button shape="round" (click) ="readNFC()" expand="block">Read
 </ion-button>
 
-    <ion-button type="submit" expand="block" class="ion-padding-horizontal ion-margin-vertical"
-    [disabled]="!productForm.valid">
-      Save Product
-    </ion-button>
-  </form>
-
+<ion-button type="submit" expand="block" class="ion-padding-horizontal ion-margin-vertical"[disabled]="!productForm.valid">
+  Save Product
+</ion-button>
+</form>
 </ion-content>

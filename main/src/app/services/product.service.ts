@@ -3,20 +3,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireFunctions } from '@angular/fire/functions';
-import { map, flatMap } from 'rxjs/operators';
-
-
-
+import { map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class ProductService {
  
-
-  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private storage: AngularFireStorage,
+  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, 
+    private storage: AngularFireStorage,
     private functions: AngularFireFunctions) { }
 
 
@@ -32,16 +28,13 @@ export class ProductService {
 
   getOneProduct(id) {
     return this.db.doc(`products/${id}`).valueChanges();
-    
   }
-  
   
   addProduct(product) {
     product.creator = this.afAuth.auth.currentUser.uid;
     const imageData = product.img;
     delete product.image;
     
-
     let documentId = null;
     let storageRef: AngularFireStorageReference = null;
 

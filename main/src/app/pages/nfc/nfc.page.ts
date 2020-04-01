@@ -40,12 +40,10 @@ export class NfcPage implements OnInit {
     private db: AngularFirestore) { }
    
 ngOnInit() {
-
-  
-      this.cartService.getCart().subscribe(cart => {
-        console.log('cart: ', cart);
-        this.amount = this.cartService.getItemCount(this.id);
-    });
+  this.cartService.getCart().subscribe(cart => {
+    console.log('cart: ', cart);
+    this.amount = this.cartService.getItemCount(this.id);
+  });
   }
 
 
@@ -54,22 +52,21 @@ ngOnInit() {
     .where('tagid','==', "049a1092285e80")
     .get()
     .then(querySnapshot => {
-            querySnapshot.forEach(doc => { this.id = doc.id; }) 
-              
-                  this.productService.getOneProduct(this.id).subscribe(res => {
-                  this.product = res;
-                  this.product.id = this.id;
-                  this.amount = this.cartService.getItemCount(this.id);
-                  console.log('tag id', this.product.tagid);
+      querySnapshot.forEach(doc => { this.id = doc.id; })
+      this.productService.getOneProduct(this.id).subscribe(res => {
+        this.product = res;
+        this.product.id = this.id;
+        this.amount = this.cartService.getItemCount(this.id);
+        console.log('tag id', this.product.tagid);
 
-                  if(this.product.tagid == "049a1092285e80"){
-                    this.cartService.addProduct(this.product);
-                  }
-                 else {
-                   this.presentAlert("Incorrect tag read");
-                 }
-                });
-     });
+        if(this.product.tagid == "049a1092285e80"){
+          this.cartService.addProduct(this.product);
+        }
+        else {
+          this.presentAlert("Incorrect tag read");
+        }
+      });
+    });
   }
 
   onDoneClicked() {
@@ -122,8 +119,6 @@ ngOnInit() {
     });
   }
 
-  
-
   private onNdefEvent(event) {
   this.listenAlert.dismiss();
 
@@ -131,25 +126,21 @@ ngOnInit() {
     .where('tagid','==', this.nfc.bytesToHexString(event.tag.id))
     .get()
     .then(querySnapshot => {
-            querySnapshot.forEach(doc => { this.id = doc.id; })
-            
-                  this.productService.getOneProduct(this.id).subscribe(res => {
-                  this.product = res;
-                  this.product.id = this.id;
-                  //console.log(this.product.tagid);
-                  this.amount = this.cartService.getItemCount(this.id);
-                  console.log('tag id', this.product.tagid);
-                  if(this.product.tagid == this.nfc.bytesToHexString(event.tag.id)){
-                    this.cartService.addProduct(this.product);
-                  }
-                 else {
-                   this.presentAlert("Incorrect tag read");
-                 }
-                });
-              
-              
+      querySnapshot.forEach(doc => { this.id = doc.id; })  
+      this.productService.getOneProduct(this.id).subscribe(res => {
+      this.product = res;
+      this.product.id = this.id;
+      this.amount = this.cartService.getItemCount(this.id);
+      console.log('tag id', this.product.tagid);
+      
+        if(this.product.tagid == this.nfc.bytesToHexString(event.tag.id)){
+          this.cartService.addProduct(this.product);
+        }
+        else {
+          this.presentAlert("Incorrect tag read");
+        }
+      });        
      });
-  
   }
 
   private async setReadNfcAlert() {
@@ -189,9 +180,7 @@ ngOnInit() {
       header: 'Alert',
       message: mess,
       buttons: ['OK', 'Cancel']
-     
     });
-
     await alert.present();
   }
 
@@ -202,8 +191,5 @@ ngOnInit() {
     });
     modal.present();
   }
-
-
-
 }
   

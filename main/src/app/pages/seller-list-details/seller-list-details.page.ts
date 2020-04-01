@@ -34,8 +34,6 @@ export class SellerListDetailsPage implements OnInit {
     })
   }
 
-  
-
   createProduct() {
     this.productService.addProduct(this.productForm.value).then(res => {
       this.navCtrl.pop();
@@ -63,7 +61,7 @@ export class SellerListDetailsPage implements OnInit {
     this.nfc.addNdefListener(() => {
       this.presentAlert('ok');
     }, (err) => {
-      this.presentAlert('ko' + err);
+      this.presentAlert('error' + err);
     }).subscribe((event) => {
       console.log(event);
       console.log(JSON.stringify(event));
@@ -76,11 +74,10 @@ export class SellerListDetailsPage implements OnInit {
   // alert message for tag
   async presentAlert(mess) {
     const alert = await this.alertController.create({
-      header: 'attenzione',
+      header: 'Read Tag',
       message: mess,
       buttons: ['OK']
     });
-
     await alert.present();
   }
 
