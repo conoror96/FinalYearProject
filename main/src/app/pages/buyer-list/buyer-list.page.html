@@ -4,24 +4,14 @@
       <ion-button (click)="signOut()">
         <ion-icon slot="icon-only" name="log-out"></ion-icon>
       </ion-button>
-      <!--     -->
-      <ion-button routerLink="/buyer/category">Categories</ion-button>
-      <!--      -->
-      <ion-button [routerLink]="['/home']">Home</ion-button>
+          
+      <ion-button routerLink="/buyer/nfc">
+        nfc
+      </ion-button>
     </ion-buttons>
     <ion-title>Buy products</ion-title>
     <ion-buttons slot="end">
 
-      <ion-button>
-        <ion-icon slot="icon-only" name="md-options"></ion-icon>
-          <ion-select [(ngModel)]="categorise_by" name="category" placeholder="Filter The Clothing By:">
-            <ion-select-option value="TOP">Top</ion-select-option>
-            <ion-select-option value="DRESS">Dress</ion-select-option>
-            <ion-select-option value="JEANS">Jeans</ion-select-option>
-            <ion-select-option value="SHOES">Shoes</ion-select-option>
-          </ion-select>
-      </ion-button>
-      
       <ion-button routerLink="/buyer/orders">
         <ion-icon slot="icon-only" name="filing"></ion-icon>
       </ion-button>

@@ -11,7 +11,7 @@ const stripe = new Stripe(secret, {
   typescript: true
 });
  
-export const createStripeCustomer = functions.region('europe-west2').auth.user().onCreate(async (snap, context) => {
+export const createStripeCustomer = functions.auth.user().onCreate(async (snap, context) => {
   
   console.log('snap: ', snap);
   const customer = await stripe.customers.create({
@@ -31,7 +31,7 @@ export const createStripeCustomer = functions.region('europe-west2').auth.user()
 
 
 // payment intent
-export const startPaymentIntent = functions.region('europe-west2').https.onCall(
+export const startPaymentIntent = functions.https.onCall(
   async(data, context) => {
     console.log('called: ', data);
     const user = await admin.firestore().collection('users').doc(data.userId).get();
@@ -60,7 +60,7 @@ export const startPaymentIntent = functions.region('europe-west2').https.onCall(
   }
 );
 
-export const webhook = functions.region('europe-west2').https.onRequest(async (request, response) => {
+export const webhook = functions.https.onRequest(async (request, response) => {
   const sig = request.headers['stripe-signature'] || '';
 
   let event = null;
@@ -110,7 +110,7 @@ export const webhook = functions.region('europe-west2').https.onRequest(async (r
   response.sendStatus(200);
 });
 
-export const getCustomerOrders = functions.region('europe-west2').https.onCall(
+export const getCustomerOrders = functions.https.onCall(
   async (data, context) => {
     const user = await admin
       .firestore()

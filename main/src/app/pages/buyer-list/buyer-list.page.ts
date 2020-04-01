@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ProductService } from '../../services/product.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-buyer-list',
@@ -17,8 +19,11 @@ export class BuyerListPage implements OnInit {
  
   cartItemCount: BehaviorSubject<number> = this.cartService.getCartItemCount();
 
+  @ViewChild('flipcontainer', { static: false }) flipcontainer: ElementRef;
+
   constructor(private auth: AuthService, private productService: ProductService, 
-    private cartService: CartService, private modalCtrl: ModalController) { }
+    private cartService: CartService, private modalCtrl: ModalController,
+    private router: Router) { }
     
   ngOnInit() {
     this.products = this.productService.getAllProducts();
@@ -36,5 +41,7 @@ export class BuyerListPage implements OnInit {
     });
     modal.present();
   }
+
+  
 
 }
