@@ -7,6 +7,8 @@ import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
+import { Router } from '@angular/router';
+
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -37,7 +39,8 @@ export class NfcPage implements OnInit {
     private productService: ProductService, 
     private cartService: CartService,
     private modalCtrl: ModalController,
-    private db: AngularFirestore) { }
+    private db: AngularFirestore,
+    private router: Router) { }
    
 ngOnInit() {
   this.cartService.getCart().subscribe(cart => {
@@ -46,8 +49,31 @@ ngOnInit() {
   });
   }
 
+  private onNdefEvent(event) {
+    this.listenAlert.dismiss();
+  
+    this.db.firestore.collection('products')
+      .where('tagid','==', this.nfc.bytesToHexString(event.tag.id))
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => { this.id = doc.id; })  
+        this.productService.getOneProduct(this.id).subscribe(res => {
+        this.product = res;
+        this.product.id = this.id;
+        this.amount = this.cartService.getItemCount(this.id);
+        console.log('tag id', this.product.tagid);
+        
+          if(this.product.tagid == this.nfc.bytesToHexString(event.tag.id)){
+            this.cartService.addProduct(this.product);
+          }
+          else {
+            this.presentAlert("Incorrect tag read");
+          }
+        });        
+       });
+    }
 
- addToCart(){
+    AddNFCtoCart(){
     this.db.firestore.collection('products')
     .where('tagid','==', "049a1092285e80")
     .get()
@@ -59,8 +85,13 @@ ngOnInit() {
         this.amount = this.cartService.getItemCount(this.id);
         console.log('tag id', this.product.tagid);
 
-        if(this.product.tagid == "049a1092285e80"){
-          this.cartService.addProduct(this.product);
+        if(this.product.tagid == "049a1092285e80")
+        {
+          console.log(this.id)
+          //this.router.navigateByUrl('/buyer/list/id');
+          
+          
+          //this.cartService.addProduct(this.product);
         }
         else {
           this.presentAlert("Incorrect tag read");
@@ -68,6 +99,12 @@ ngOnInit() {
       });
     });
   }
+
+  addToCart() {
+    console.log('product added', this.product);
+    this.cartService.addProduct(this.product);
+  }
+
 
   onDoneClicked() {
     this.setupNFC();
@@ -119,29 +156,6 @@ ngOnInit() {
     });
   }
 
-  private onNdefEvent(event) {
-  this.listenAlert.dismiss();
-
-  this.db.firestore.collection('products')
-    .where('tagid','==', this.nfc.bytesToHexString(event.tag.id))
-    .get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => { this.id = doc.id; })  
-      this.productService.getOneProduct(this.id).subscribe(res => {
-      this.product = res;
-      this.product.id = this.id;
-      this.amount = this.cartService.getItemCount(this.id);
-      console.log('tag id', this.product.tagid);
-      
-        if(this.product.tagid == this.nfc.bytesToHexString(event.tag.id)){
-          this.cartService.addProduct(this.product);
-        }
-        else {
-          this.presentAlert("Incorrect tag read");
-        }
-      });        
-     });
-  }
 
   private async setReadNfcAlert() {
     this.listenAlert = await this.alertCtrl.create({
@@ -158,6 +172,20 @@ ngOnInit() {
     await this.listenAlert.present();
     await this.listenAlert.onDidDismiss().then(() => {
       this.nfcSubscription.unsubscribe();
+    });
+  }
+
+  private onRead() {
+    this.alertCtrl.create({
+      message: 'Add Product to cart?',
+      buttons: [
+        {
+          text: 'Okay',
+          role: 'cancel'
+        }
+      ]
+    }).then(alertEl => {
+      alertEl.present();
     });
   }
 

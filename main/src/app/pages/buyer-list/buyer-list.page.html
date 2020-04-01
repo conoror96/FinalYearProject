@@ -32,7 +32,7 @@
     <input type="text" [(ngModel)]="searchCategory" placeholder="Search"> 
   </div>
   <ion-list>
-    <ion-item *ngFor="let p of products | async |category:searchCategory" [routerLink]="[p.id]">
+    <ion-item *ngFor="let p of products | async | category:searchCategory" [routerLink]="[p.id]">
       <ion-thumbnail slot="start">
         <img [src]="p.img">
       </ion-thumbnail>
