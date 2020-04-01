@@ -33,29 +33,35 @@
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Category</ion-label>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 82af731dba65f3b7a9f4f04bdf239cb086eec6a2
       <form [formGroup]="productForm">
         <select formControlName="categoryControl">
           <option [value]="category" *ngFor="let category of categories">{{category}}</option>
         </select>
       </form>
     </ion-item>
-    <ion-item>
+    <ion-item> 
         <ion-label position="stacked">Description</ion-label>
+<<<<<<< HEAD
       <ion-input formControlName="category"></ion-input>
   </ion-item>
+=======
+        <ion-textarea rows="6" formControlName="desc"></ion-textarea>
+    </ion-item>
+
+
+
+    
+>>>>>>> 82af731dba65f3b7a9f4f04bdf239cb086eec6a2
   <ion-item>
     <ion-label position="stacked">TagID</ion-label>
     <ion-input formControlName="tagid"></ion-input>
 </ion-item> 
-<ion-button shape="round" (click) ="readNFC()" expand="block"
-style="height: 30%; width: 75%; margin: 10% auto auto;font-size: 50px">Read
+<ion-button shape="round" (click) ="readNFC()" expand="block">Read
 </ion-button>
-    <ion-item>
-        <ion-label position="stacked">Desccription</ion-label>
->>>>>>> 84d6601e3eff3da2112c6c061c3846a0e61afbbd
-        <ion-textarea rows="6" formControlName="desc"></ion-textarea>
-    </ion-item>
 
     <ion-button type="submit" expand="block" class="ion-padding-horizontal ion-margin-vertical"
     [disabled]="!productForm.valid">

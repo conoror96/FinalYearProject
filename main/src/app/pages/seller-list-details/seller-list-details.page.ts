@@ -27,12 +27,14 @@ export class SellerListDetailsPage implements OnInit {
       name: ['', Validators.required],
       price: ['', Validators.required],
       categoryControl: ['Top'],
-      desc: ['', Validators.required],
-      category: ['', Validators.required],
+      desc: '',
+      category: '',
       tagid: ['', Validators.required],
       img: ''
     })
   }
+
+  
 
   createProduct() {
     this.productService.addProduct(this.productForm.value).then(res => {
