@@ -18,6 +18,7 @@ import {  } from 'rxjs/Observable';
 export class BuyerListPage implements OnInit {
   products: Observable<any>;
   searchCategory: string= "";
+  searchProduct: string="";
   
 
   cartItemCount: BehaviorSubject<number> = this.cartService.getCartItemCount();

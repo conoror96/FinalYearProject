@@ -31,19 +31,6 @@
 
 <ion-content>
 
-  
-   <!--<ion-list>
-    <ion-item *ngFor="let p of products | category.pipe.ts:searchCategory" [routerLink]="[p.id]">
-      <ion-thumbnail slot="start">
-        <img [src]="p.img">
-      </ion-thumbnail>
-      <ion-label>
-        {{ p.name }}
-        <p>{{ p.price | currency:'USD' }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>-->
-
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()">
       <div class="cart-length">{{ cartItemCount | async }}</div>
@@ -52,7 +39,7 @@
   </ion-fab>
 
   <div style="text-align: center;">
-    <input type="text" [(ngModel)]="searchCategory">
+    <input type="text" [(ngModel)]="searchCategory" placeholder="Search"> 
   </div>
   <ion-list>
     <ion-item *ngFor="let p of products | async |category:searchCategory" [routerLink]="[p.id]">

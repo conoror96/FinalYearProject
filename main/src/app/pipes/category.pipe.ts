@@ -37,8 +37,11 @@ transform(value: any, searchText: string): any {
   }
 
   return value.filter(product =>
-    product.category.toLowerCase().indexOf(searchText.toLowerCase()) !== -1);
+    product.category.toLowerCase().indexOf(searchText.toLowerCase()) !== -1 ||
+    product.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1);
 }
+
+
 
 
 }
