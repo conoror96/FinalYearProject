@@ -64,7 +64,7 @@ ngOnInit() {
         console.log('tag id', this.product.tagid);
         
           if(this.product.tagid == this.nfc.bytesToHexString(event.tag.id)){
-            this.cartService.addProduct(this.product);
+            
           }
           else {
             this.presentAlert("Incorrect tag read");
@@ -88,10 +88,6 @@ ngOnInit() {
         if(this.product.tagid == "049a1092285e80")
         {
           console.log(this.id)
-          //this.router.navigateByUrl('/buyer/list/id');
-          
-          
-          //this.cartService.addProduct(this.product);
         }
         else {
           this.presentAlert("Incorrect tag read");
