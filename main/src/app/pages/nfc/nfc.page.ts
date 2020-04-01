@@ -40,6 +40,8 @@ export class NfcPage implements OnInit {
     private db: AngularFirestore) { }
    
 ngOnInit() {
+
+  
       this.cartService.getCart().subscribe(cart => {
         console.log('cart: ', cart);
         this.amount = this.cartService.getItemCount(this.id);
@@ -49,7 +51,7 @@ ngOnInit() {
 
  addToCart(){
     this.db.firestore.collection('products')
-    .where('tagid','==', "049e4992285e80")
+    .where('tagid','==', "049a1092285e80")
     .get()
     .then(querySnapshot => {
             querySnapshot.forEach(doc => { this.id = doc.id; }) 
@@ -60,7 +62,12 @@ ngOnInit() {
                   this.amount = this.cartService.getItemCount(this.id);
                   console.log('tag id', this.product.tagid);
 
-                  this.cartService.addProduct(this.product);
+                  if(this.product.tagid == "049a1092285e80"){
+                    this.cartService.addProduct(this.product);
+                  }
+                 else {
+                   this.presentAlert("Incorrect tag read");
+                 }
                 });
      });
   }
@@ -125,28 +132,21 @@ ngOnInit() {
     .get()
     .then(querySnapshot => {
             querySnapshot.forEach(doc => { this.id = doc.id; })
-            if(this.nfc.bytesToHexString == this.id){
+            
                   this.productService.getOneProduct(this.id).subscribe(res => {
                   this.product = res;
                   this.product.id = this.id;
+                  //console.log(this.product.tagid);
                   this.amount = this.cartService.getItemCount(this.id);
                   console.log('tag id', this.product.tagid);
-
-                  this.cartService.addProduct(this.product);
+                  if(this.product.tagid == this.nfc.bytesToHexString(event.tag.id)){
+                    this.cartService.addProduct(this.product);
+                  }
+                 else {
+                   this.presentAlert("Incorrect tag read");
+                 }
                 });
-              }
-              else {
-                this.alertCtrl.create({
-                  message: 'Incorrect Tag Read',
-                  buttons: [
-                    {
-                      text: 'Okay',
-                      role: 'cancel'
-                    }
-                  ]
-                }).then(alertEl => {
-                  alertEl.present();
-                });}
+              
               
      });
   

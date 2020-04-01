@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c2ee3b93-b0a0-4a8b-a6e7-7f5ef7bc85f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/app/pages/account-details/account-details.page.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/app/pages/nfc/nfc.page.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
