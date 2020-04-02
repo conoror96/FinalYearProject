@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content color="secondary">
  
   <div class="ion-text-end">
     <ion-button (click)="close()" fill="clear" color="dark">
@@ -6,11 +6,19 @@
     </ion-button>
   </div>
  
-  <div class="ion-padding">
+  <div class="ion-padding" color="secondary">
  
-    <ion-list>
+    <ion-card>
       <ion-item *ngFor="let p of cart" class="ion-text-wrap">
         <ion-grid>
+          <ion-row> 
+            <ion-col size="8" class="ion-text-center">
+              <b>{{ p.name }}</b>
+            </ion-col>
+            <ion-col size="4" class="ion-text-end">
+              {{ p.amount * p.price | currency:'EUR' }}
+            </ion-col>
+          </ion-row>
           <ion-row class="ion-align-items-center">
             <ion-col size="3" class="ion-text-center">
               <ion-button color="medium" fill="clear" (click)="decreaseCartItem(p)">
@@ -20,6 +28,7 @@
  
             <ion-col size="2" class="ion-text-center">
               {{ p.amount }}
+              
             </ion-col>
  
             <ion-col size="3" class="ion-text-center">
@@ -34,29 +43,22 @@
               </ion-button>
             </ion-col>
           </ion-row>
-          <ion-row>
-            <ion-col size="9">
-              <b>{{ p.name }}</b>
-            </ion-col>
-            <ion-col size="3" class="ion-text-end">
-              {{ p.amount * p.price | currency:'EUR' }}
-            </ion-col>
-          </ion-row>
+
         </ion-grid>
       </ion-item>
       <ion-item>
         <ion-grid>
           <ion-row>
-            <ion-col size="9">
-              Total:
+            <ion-col  class="ion-text-end">
+              <b>Total:</b>
             </ion-col>
-            <ion-col size="3" class="ion-text-end">
+            <ion-col size="2" class="ion-text-end">
               {{ getTotal() | currency:'EUR' }}
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
-    </ion-list>
+    </ion-card>
  
     <ion-button expand="full" (click)="checkout()">
       Checkout

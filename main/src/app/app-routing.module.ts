@@ -37,6 +37,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/buyer-orders/buyer-orders.module').then( m => m.BuyerOrdersPageModule)
       },
       {
+        path: 'list/Dress',
+        loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
+      },
+      {
         path: 'nfc',
         loadChildren: () => import('./pages/nfc/nfc.module').then( m => m.NfcPageModule)
       },
@@ -75,7 +79,6 @@ const routes: Routes = [
     path: 'cart-modal',
     loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
   }
-  
 ]; 
 
 @NgModule({

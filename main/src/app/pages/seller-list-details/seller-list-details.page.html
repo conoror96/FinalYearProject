@@ -7,35 +7,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="secondary">
+  <ion-card color="secondary">
   <form [formGroup]="productForm" (ngSubmit)="createProduct()">
-    <div class="product-image ion-text-center">
+    <div class="product-image ion-text-center" color="secondary">
       <img [src]="productImageBase64" *ngIf="productImageBase64">
       <ion-button type="button" expand="full" fill="clear" (click)="selectImage()">
         Select product image
       </ion-button>
       </div>
-    <ion-item>
+    <ion-item color="secondary">
         <ion-label position="stacked">Name</ion-label>
         <ion-input formControlName="name"></ion-input>
     </ion-item> 
-    <ion-item>
+    <ion-item color="secondary">
         <ion-label position="stacked">Price</ion-label>
         <ion-input formControlName="price"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item color="secondary">
       <ion-label position="stacked">Category</ion-label>
       <form [formGroup]="productForm">
-        <select formControlName="categoryControl">
+        <select formControlName="categoryControl" >
           <option [value]="category" *ngFor="let category of categories">{{category}}</option>
         </select>
       </form>
     </ion-item>
-    <ion-item> 
+    <ion-item color="secondary"> 
         <ion-label position="stacked">Description</ion-label>
       <ion-input formControlName="category"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item color="secondary">
     <ion-label position="stacked">TagID</ion-label>
     <ion-input formControlName="tagid"></ion-input>
 </ion-item> 
@@ -46,4 +47,5 @@
   Save Product
 </ion-button>
 </form>
+</ion-card>
 </ion-content>

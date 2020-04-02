@@ -4,22 +4,14 @@
       <ion-button (click)="signOut()">
         <ion-icon slot="icon-only" name="log-out"></ion-icon>
       </ion-button>
-          
-      <ion-button routerLink="/buyer/nfc">
-        nfc
-      </ion-button>
     </ion-buttons>
+    
     <ion-title>Buy products</ion-title>
-    <ion-buttons slot="end">
-
-      <ion-button routerLink="/buyer/orders">
-        <ion-icon slot="icon-only" name="filing"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="secondary">
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()">
@@ -28,11 +20,8 @@
     </ion-fab-button>
   </ion-fab>
 
-  <div style="text-align: center;">
-    <input type="text" [(ngModel)]="searchCategory" placeholder="Search"> 
-  </div>
-  <ion-list>
-    <ion-item *ngFor="let p of products | async | category:searchCategory" [routerLink]="[p.id]">
+  <ion-card>  
+      <ion-item color="secondary" *ngFor="let p of products | async | category:searchCategory" [routerLink]="[p.id]">
       <ion-thumbnail slot="start">
         <img [src]="p.img">
       </ion-thumbnail>
@@ -42,5 +31,25 @@
         <p>{{ p.price | currency:'EUR' }}</p>
       </ion-label>
     </ion-item>
-  </ion-list>
+  </ion-card>
+    
 </ion-content> 
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+
+      <ion-button routerLink="/buyer/nfc">
+        <ion-icon slot="icon-only" name="aperture"></ion-icon></ion-button>
+       
+      <div style="text-align: center; color: black;">
+        <input type="text" [(ngModel)]="searchCategory" placeholder="Search"> 
+      </div>
+
+      <ion-button routerLink="/buyer/orders">
+        <ion-icon slot="icon-only" name="filing"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

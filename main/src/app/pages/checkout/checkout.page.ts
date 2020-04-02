@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
  
 declare var Stripe;
 
@@ -32,7 +33,8 @@ export class CheckoutPage implements OnInit {
     private productService: ProductService,
     private toastCtrl: ToastController,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private modalCtrl: ModalController
   ) {}
  
   ngOnInit() {
@@ -129,5 +131,12 @@ export class CheckoutPage implements OnInit {
         await toast.present();
       });
       
+  }
+
+  
+
+  close(){
+    //this.modalCtrl.dismiss();
+    this.router.navigateByUrl('/buyer/list');
   }
 }
