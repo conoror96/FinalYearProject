@@ -43,11 +43,11 @@ export class CheckoutPage implements OnInit {
     });
  
     this.dataForm = this.fb.group({
-      name: ['Conor OReilly', Validators.required],
-      zip: ['12345', Validators.required],
-      street: ['Corrib Park', Validators.required],
-      city: ['Galway', Validators.required],
-      country: ['IE', Validators.required]
+      name: ['', Validators.required],
+      eircode: [''],
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required]
     });
 
  
@@ -75,7 +75,7 @@ export class CheckoutPage implements OnInit {
           address: {
             line1: this.dataForm.get("street").value,
             city: this.dataForm.get("city").value,
-            postal_code: this.dataForm.get("zip").value,
+            postal_code: this.dataForm.get("eircode").value,
             country: this.dataForm.get("country").value
           },
           email: this.authService.getEmail()

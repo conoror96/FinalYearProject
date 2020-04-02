@@ -16,6 +16,12 @@
     font-size: 2em;
   }
 
-  .my-input {
-    color: gray;
+  
+
+  ion-input {
+    background: #dde9ff;
+    border-radius: 10px;
+    margin-top: 6px;
+    --padding-start: 6px !important;
+    color: #4E4E4E;
   }

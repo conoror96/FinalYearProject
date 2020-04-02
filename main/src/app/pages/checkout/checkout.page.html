@@ -17,7 +17,7 @@
 
   <ion-card color="secondary">
   <form [formGroup]="dataForm" (submit)="buyNow()">
-    <ion-item color="secondary"> 
+    <ion-item lines="none" color="secondary"> 
       <ion-label position="stacked" class="my-label">Name</ion-label>
       <ion-input formControlName="name" ></ion-input>
     </ion-item>
@@ -30,8 +30,8 @@
       <ion-input formControlName="city"></ion-input>
     </ion-item>
     <ion-item color="secondary">
-      <ion-label position="stacked">ZIP</ion-label>
-      <ion-input formControlName="zip"></ion-input>
+      <ion-label position="stacked">Eircode/Zip</ion-label>
+      <ion-input formControlName="eircode"></ion-input>
     </ion-item>
     <ion-item color="secondary">
       <ion-label position="stacked">Country</ion-label>

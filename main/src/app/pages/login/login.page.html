@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Register login page</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="secondary">
 
-  <div class="flip-container" #flipcontainer>
+  <div class="flip-container"  #flipcontainer>
     <div class="flipper">
       <div class="front">
           <ion-card>
@@ -16,12 +16,12 @@
               <ion-card-content>
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
           
-                  <ion-item lines="none">
+                  <ion-item lines="none" color="secondary">
                     <ion-label position="stacked">Email</ion-label>
                     <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none">
+                  <ion-item lines="none" color="secondary">
                     <ion-label position="stacked">Password</ion-label>
                     <ion-input type="password" formControlName="password"></ion-input>
                   </ion-item>
@@ -31,7 +31,7 @@
                 Sign in
                 </ion-button>
      
-                  <ion-button expand="block" type="button" color="secondary" fill="outline"
+                  <ion-button expand="block" type="button" color="primary" fill="outline"
                   class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
                 Create Account
                 </ion-button>
@@ -48,22 +48,22 @@
               <ion-card-content>
                 <form [formGroup]="registerForm" (ngSubmit)="register()">
           
-                  <ion-item lines="none">
+                  <ion-item lines="none" color="secondary">
                     <ion-label position="stacked">Email</ion-label>
                     <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none">
+                  <ion-item lines="none" color="secondary">
                     <ion-label position="stacked">Name</ion-label>
                     <ion-input placeholder="John" formControlName="name"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none">
+                  <ion-item lines="none" color="secondary">
                     <ion-label position="stacked">Password</ion-label>
                     <ion-input type="password" formControlName="password"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none">
+                  <ion-item lines="none" color="secondary">
                     <ion-label>Select Role</ion-label>
                     <ion-select formControlName="role">
                         <ion-select-option value="BUYER">Buyer</ion-select-option>
@@ -76,7 +76,7 @@
                     Register
                   </ion-button>
 
-                  <ion-button expand="block" type="button" color="secondary" fill="clear"
+                  <ion-button expand="block" type="button" color="primary" fill="outline"
                   class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
                   <ion-icon name="arrow-back" slot="start"></ion-icon>
                 Back to Login
@@ -88,7 +88,4 @@
       </div>
     </div>
   </div>
-
-  <h1>NB: buyer@gmit.ie buyer test123</h1><br />
-  <h1>NB: seller@gmit.ie seller test123</h1>
 </ion-content>
