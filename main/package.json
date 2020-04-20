@@ -40,6 +40,7 @@
     "core-js": "^2.5.4",
     "firebase": "^7.11.0",
     "ionic-native-transitions": "^1.0.3",
+    "minimist": "^1.2.5",
     "phonegap-nfc": "^1.0.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",

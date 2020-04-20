@@ -7,9 +7,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-item color="primary"></ion-item>
-  
-  
   <!-- Left Floating divider -->
   <div class="sidebar" style="float: left;padding: 5hv;margin-top: 2hv;">
     <!-- Go To NFC -->
@@ -37,6 +34,7 @@
    </ion-select>
    </ion-item>
 
+  <!-- Go To Orders Page -->
    <ion-item color="primary">
     <ion-label>Your Orders</ion-label>
     <ion-button routerLink="/buyer/orders">
@@ -44,7 +42,7 @@
     </ion-button>
    </ion-item>
 
-
+   <!-- Signout -->
    <ion-item color="primary">
     <ion-label>Logout</ion-label>
     <ion-button (click)="signOut()">
