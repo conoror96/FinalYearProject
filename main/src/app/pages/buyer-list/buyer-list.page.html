@@ -21,7 +21,7 @@
   </ion-fab>
 
   <ion-card>  
-      <ion-item color="secondary" *ngFor="let p of products | async | category:searchCategory" [routerLink]="[p.id]">
+      <ion-item color="secondary" *ngFor="let p of products | async | category:searchCategory | filter:btnCategory" [routerLink]="[p.id]">
       <ion-thumbnail slot="start">
         <img [src]="p.img">
       </ion-thumbnail>
@@ -50,6 +50,11 @@
       <ion-button routerLink="/buyer/orders">
         <ion-icon slot="icon-only" name="filing"></ion-icon>
       </ion-button>
+
+      <div style="text-align: center; color: black;">
+      <input mdInput id="btnCategory" type="text" [(ngModel)]="btnCategory">
+      <button class="button secondary" (click)="btnCategory = 'top'">Tops</button>
+    </div>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 })
 export class BuyerListPage implements OnInit {
   products: Observable<any>;
-  searchCategory: string= "";
  
   cartItemCount: BehaviorSubject<number> = this.cartService.getCartItemCount();
 

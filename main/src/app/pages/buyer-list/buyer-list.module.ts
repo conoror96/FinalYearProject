@@ -9,6 +9,7 @@ import { BuyerListPageRoutingModule } from './buyer-list-routing.module';
 import { BuyerListPage } from './buyer-list.page';
 
 import { CategoryPipe } from '../../pipes/category.pipe';
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 @NgModule({
   
@@ -18,6 +19,6 @@ import { CategoryPipe } from '../../pipes/category.pipe';
     IonicModule,
     BuyerListPageRoutingModule
   ],
-  declarations: [BuyerListPage, CategoryPipe]
+  declarations: [BuyerListPage, CategoryPipe, FilterPipe]
 })
 export class BuyerListPageModule {}
