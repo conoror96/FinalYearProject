@@ -20,16 +20,16 @@
     <!-- Search -->
     <ion-item color="primary">
       <div style="text-align: center; color: black;">
-        <input type="text" [(ngModel)]="searchCategory" placeholder="Search"> 
+        <input type="text" [(ngModel)]="filterProducts" placeholder="Search"> 
       </div> 
     </ion-item>
    
    <!-- Dropdown for category filter -->
    <ion-item color="primary">
      <ion-label>Categories</ion-label>
-     <ion-select placeholder="Select One" [(ngModel)]="btnCategory">
+     <ion-select placeholder="Select One" [(ngModel)]="filterProducts">
      <ion-select-option value="">All</ion-select-option>
-     <ion-select-option value="top">Tops</ion-select-option>
+     <ion-select-option value="top">Tops</ion-select-option> 
      <ion-select-option value="shoes">Shoes</ion-select-option>
      <ion-select-option value="dress">Dresses</ion-select-option>
      <ion-select-option value="jeans">Jeans</ion-select-option>
@@ -63,13 +63,13 @@
   </ion-fab>
 <!-- Display Products-->
   <ion-card>  
-      <ion-item *ngFor="let p of products | async | category:searchCategory | filter:btnCategory" [routerLink]="[p.id]">
+      <ion-item *ngFor="let p of products | async | filter:filterProducts" [routerLink]="[p.id]">
       <ion-thumbnail slot="start">
         <img [src]="p.img">
       </ion-thumbnail>
       <ion-label>
         {{ p.name }}
-        <p>{{ p.category}}</p>
+        <p>{{ p.categoryControl}}</p>
         <p>{{ p.price | currency:'EUR' }}</p>
       </ion-label>
     </ion-item>
