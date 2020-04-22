@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>-->
  
-<ion-content color="secondary">
+<ion-content color="light">
 
   <div class="ion-text-end">
     <ion-button (click)="close()" fill="clear" color="dark">
@@ -15,25 +15,25 @@
     </ion-button>
   </div>
 
-  <ion-card color="secondary">
+  <ion-card color="light">
   <form [formGroup]="dataForm" (submit)="buyNow()">
-    <ion-item lines="none" color="secondary"> 
+    <ion-item lines="none"> 
       <ion-label position="stacked" class="my-label">Name</ion-label>
       <ion-input formControlName="name" ></ion-input>
     </ion-item>
-    <ion-item color="secondary">
+    <ion-item>
       <ion-label position="stacked" class="my-label">Street</ion-label>
       <ion-input formControlName="street" class="my-input"></ion-input>
     </ion-item>
-    <ion-item color="secondary">
+    <ion-item>
       <ion-label position="stacked">City</ion-label>
       <ion-input formControlName="city"></ion-input>
     </ion-item>
-    <ion-item color="secondary">
+    <ion-item>
       <ion-label position="stacked">Eircode/Zip</ion-label>
       <ion-input formControlName="eircode"></ion-input>
     </ion-item>
-    <ion-item color="secondary">
+    <ion-item>
       <ion-label position="stacked">Country</ion-label>
       <ion-input formControlName="country"></ion-input>
     </ion-item>

@@ -95,7 +95,9 @@
       },
       "cordova-plugin-inappbrowser": {},
       "com.paypal.cordova.mobilesdk": {},
-      "cordova-plugin-camera": {},
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
       "com.telerik.plugins.nativepagetransitions": {}
     },
     "platforms": [

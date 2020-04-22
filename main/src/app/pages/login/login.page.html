@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="secondary">
+<ion-content color="light">
 
   <div class="flip-container"  #flipcontainer>
     <div class="flipper">
@@ -16,12 +16,12 @@
               <ion-card-content>
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
           
-                  <ion-item lines="none" color="secondary">
+                  <ion-item lines="none" color="light">
                     <ion-label position="stacked">Email</ion-label>
                     <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none" color="secondary">
+                  <ion-item lines="none" color="light">
                     <ion-label position="stacked">Password</ion-label>
                     <ion-input type="password" formControlName="password"></ion-input>
                   </ion-item>
@@ -48,22 +48,22 @@
               <ion-card-content>
                 <form [formGroup]="registerForm" (ngSubmit)="register()">
           
-                  <ion-item lines="none" color="secondary">
+                  <ion-item lines="none" color="light">
                     <ion-label position="stacked">Email</ion-label>
-                    <ion-input type="email" placeholder="john@doe.com" formControlName="email"></ion-input>
+                    <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none" color="secondary">
+                  <ion-item lines="none" color="light">
                     <ion-label position="stacked">Name</ion-label>
-                    <ion-input placeholder="John" formControlName="name"></ion-input>
+                    <ion-input placeholder="Name" formControlName="name"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none" color="secondary">
+                  <ion-item lines="none" color="light">
                     <ion-label position="stacked">Password</ion-label>
                     <ion-input type="password" formControlName="password"></ion-input>
                   </ion-item>
           
-                  <ion-item lines="none" color="secondary">
+                  <ion-item lines="none" color="light">
                     <ion-label>Select Role</ion-label>
                     <ion-select formControlName="role">
                         <ion-select-option value="BUYER">Buyer</ion-select-option>

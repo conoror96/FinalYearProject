@@ -7,8 +7,10 @@
 </ion-header>
 
 <ion-content>
+  <!-- Put everything in an item that goes under header -->
+  <ion-item color="primary">
   <!-- Left Floating divider -->
-  <div class="sidebar" style="float: left;padding: 5hv;margin-top: 2hv;">
+  <!-- <div class="sidebar" style="float: left;padding: 5hv;margin-top: 2hv;"> -->
     <!-- Go To NFC -->
     <ion-item color="primary">
      <ion-label>NFC</ion-label>
@@ -19,7 +21,7 @@
     <ion-item color="primary">
       <div style="text-align: center; color: black;">
         <input type="text" [(ngModel)]="searchCategory" placeholder="Search"> 
-      </div>
+      </div> 
     </ion-item>
    
    <!-- Dropdown for category filter -->
@@ -49,12 +51,10 @@
       <ion-icon slot="icon-only" name="log-out"></ion-icon>
     </ion-button>
    </ion-item>
-  </div> 
+  <!-- </div> -->
+</ion-item>
 
-  
-
-
-<!-- Cart Icon -->
+  <!-- Cart Icon -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()">
       <div class="cart-length">{{ cartItemCount | async }}</div>
@@ -80,6 +80,5 @@
 <ion-footer>
   <ion-toolbar color="primary">
     <ion-title></ion-title>
-    
   </ion-toolbar>
 </ion-footer>
