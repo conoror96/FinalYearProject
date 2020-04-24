@@ -1,50 +1,84 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="signOut()">
-        <ion-icon slot="icon-only" name="log-out"></ion-icon>
-      </ion-button>
-      <!--     -->
-      <ion-button routerLink="/buyer/category">Categories</ion-button>
-      <!--      -->
-      <ion-button [routerLink]="['/home']">Home</ion-button>
     </ion-buttons>
-    <ion-title>Buy products</ion-title>
-    <ion-buttons slot="end">
-
-      <ion-button>
-        <ion-icon slot="icon-only" name="md-options"></ion-icon>
-          <ion-select [(ngModel)]="categorise_by" name="category" placeholder="Filter The Clothing By:">
-            <ion-select-option value="TOP">Top</ion-select-option>
-            <ion-select-option value="DRESS">Dress</ion-select-option>
-            <ion-select-option value="JEANS">Jeans</ion-select-option>
-            <ion-select-option value="SHOES">Shoes</ion-select-option>
-          </ion-select>
-      </ion-button>
-      
-      <ion-button routerLink="/buyer/orders">
-        <ion-icon slot="icon-only" name="filing"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title>Products</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- Put everything in an item that goes under header -->
+  <ion-item color="primary">
+  <!-- Left Floating divider -->
+  <!-- <div class="sidebar" style="float: left;padding: 5hv;margin-top: 2hv;"> -->
+    <!-- Go To NFC -->
+    <ion-item color="primary">
+     <ion-label>NFC</ion-label>
+     <ion-button routerLink="/buyer/nfc"> 
+      <ion-icon slot="icon-only" name="aperture"></ion-icon></ion-button>
+    </ion-item> 
+    <!-- Search -->
+    <ion-item color="primary">
+      <div style="text-align: center; color: black;">
+        <input type="text" [(ngModel)]="filterProducts" placeholder="Search"> 
+      </div> 
+    </ion-item>
+   
+   <!-- Dropdown for category filter -->
+   <ion-item color="primary">
+     <ion-label>Categories</ion-label>
+     <ion-select placeholder="Select One" [(ngModel)]="filterProducts">
+     <ion-select-option value="">All</ion-select-option>
+     <ion-select-option value="top">Tops</ion-select-option> 
+     <ion-select-option value="shoes">Shoes</ion-select-option>
+     <ion-select-option value="dress">Dresses</ion-select-option>
+     <ion-select-option value="jeans">Jeans</ion-select-option>
+   </ion-select>
+   </ion-item>
+
+  <!-- Go To Orders Page -->
+   <ion-item color="primary">
+    <ion-label>Your Orders</ion-label>
+    <ion-button routerLink="/buyer/orders">
+      <ion-icon slot="icon-only" name="filing"></ion-icon>
+    </ion-button>
+   </ion-item>
+
+   <!-- Signout -->
+   <ion-item color="primary">
+    <ion-label>Logout</ion-label>
+    <ion-button (click)="signOut()">
+      <ion-icon slot="icon-only" name="log-out"></ion-icon>
+    </ion-button>
+   </ion-item>
+  <!-- </div> -->
+</ion-item>
+
+  <!-- Cart Icon -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()">
       <div class="cart-length">{{ cartItemCount | async }}</div>
       <ion-icon name="cart" class="cart-icon"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-list>
-    <ion-item *ngFor="let p of products | async" [routerLink]="[p.id]">
+<!-- Display Products-->
+  <ion-card>  
+      <ion-item *ngFor="let p of products | async | filter:filterProducts" [routerLink]="[p.id]">
       <ion-thumbnail slot="start">
         <img [src]="p.img">
       </ion-thumbnail>
       <ion-label>
         {{ p.name }}
-        <p>{{ p.price | currency:'USD' }}</p>
+        <p>{{ p.categoryControl}}</p>
+        <p>{{ p.price | currency:'EUR' }}</p>
       </ion-label>
     </ion-item>
-  </ion-list>
-</ion-content>
+  </ion-card>
+</ion-content> 
+
+<!-- Footer -->
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-footer>

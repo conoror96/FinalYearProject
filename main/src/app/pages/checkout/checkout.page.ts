@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
  
 declare var Stripe;
 
@@ -32,7 +33,8 @@ export class CheckoutPage implements OnInit {
     private productService: ProductService,
     private toastCtrl: ToastController,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private modalCtrl: ModalController
   ) {}
  
   ngOnInit() {
@@ -41,11 +43,11 @@ export class CheckoutPage implements OnInit {
     });
  
     this.dataForm = this.fb.group({
-      name: ['Conor OReilly', Validators.required],
-      zip: ['12345', Validators.required],
-      street: ['Corrib Park', Validators.required],
-      city: ['Galway', Validators.required],
-      country: ['IE', Validators.required]
+      name: ['', Validators.required],
+      eircode: [''],
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required]
     });
 
  
@@ -73,7 +75,7 @@ export class CheckoutPage implements OnInit {
           address: {
             line1: this.dataForm.get("street").value,
             city: this.dataForm.get("city").value,
-            postal_code: this.dataForm.get("zip").value,
+            postal_code: this.dataForm.get("eircode").value,
             country: this.dataForm.get("country").value
           },
           email: this.authService.getEmail()
@@ -129,5 +131,12 @@ export class CheckoutPage implements OnInit {
         await toast.present();
       });
       
+  }
+
+  
+
+  close(){
+    //this.modalCtrl.dismiss();
+    this.router.navigateByUrl('/buyer/list');
   }
 }

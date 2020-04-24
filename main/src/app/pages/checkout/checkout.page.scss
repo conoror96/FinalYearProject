@@ -11,3 +11,17 @@
     color: var(--ion-color-danger);
     margin: 10px;
   }
+
+  .my-label {
+    font-size: 2em;
+  }
+
+  
+
+  ion-input {
+    background: #dde9ff;
+    border-radius: 10px;
+    margin-top: 6px;
+    --padding-start: 6px !important;
+    color: #4E4E4E;
+  }

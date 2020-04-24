@@ -8,13 +8,16 @@ import { BuyerListPageRoutingModule } from './buyer-list-routing.module';
 
 import { BuyerListPage } from './buyer-list.page';
 
+import { FilterPipe } from '../../pipes/filter.pipe';
+
 @NgModule({
+  
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     BuyerListPageRoutingModule
   ],
-  declarations: [BuyerListPage]
+  declarations: [BuyerListPage, FilterPipe]
 })
 export class BuyerListPageModule {}

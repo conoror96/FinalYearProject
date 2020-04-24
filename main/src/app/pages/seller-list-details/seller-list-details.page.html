@@ -7,31 +7,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
+  <ion-card color="light">
   <form [formGroup]="productForm" (ngSubmit)="createProduct()">
-    <!--
-    <div class="product-image ion-text-center">
-      <img [src]="productImageBase64" *ngIf="productImageBase64">
-      <ion-button type="button" expand="full" fill="clear" (click)="selectImage()">
-        Select product image
-      </ion-button>
-    </div> -->
-
-    <div class="product-image ion-text-center">
+    <div class="product-image ion-text-center" color="light">
       <img [src]="productImageBase64" *ngIf="productImageBase64">
       <ion-button type="button" expand="full" fill="clear" (click)="selectImage()">
         Select product image
       </ion-button>
       </div>
-    <ion-item>
+    <ion-item color="light">
         <ion-label position="stacked">Name</ion-label>
         <ion-input formControlName="name"></ion-input>
     </ion-item> 
-    <ion-item>
+    <ion-item color="light">
         <ion-label position="stacked">Price</ion-label>
         <ion-input formControlName="price"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item color="light">
       <ion-label position="stacked">Category</ion-label>
       <form [formGroup]="productForm">
         <select formControlName="categoryControl">
@@ -39,21 +32,20 @@
         </select>
       </form>
     </ion-item>
-    <ion-item> 
+    <ion-item color="light"> 
         <ion-label position="stacked">Description</ion-label>
-      <ion-input formControlName="category"></ion-input>
+      <ion-input formControlName="desc"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item color="light">
     <ion-label position="stacked">TagID</ion-label>
     <ion-input formControlName="tagid"></ion-input>
 </ion-item> 
 <ion-button shape="round" (click) ="readNFC()" expand="block">Read
 </ion-button>
 
-    <ion-button type="submit" expand="block" class="ion-padding-horizontal ion-margin-vertical"
-    [disabled]="!productForm.valid">
-      Save Product
-    </ion-button>
-  </form>
-
+<ion-button type="submit" expand="block" class="ion-padding-horizontal ion-margin-vertical"[disabled]="!productForm.valid">
+  Save Product
+</ion-button>
+</form>
+</ion-card>
 </ion-content>

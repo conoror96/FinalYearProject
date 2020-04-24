@@ -12,6 +12,7 @@ const stripe = new Stripe(secret, {
 });
  
 export const createStripeCustomer = functions.auth.user().onCreate(async (snap, context) => {
+  
   console.log('snap: ', snap);
   const customer = await stripe.customers.create({
     email: snap.email
@@ -28,6 +29,7 @@ export const createStripeCustomer = functions.auth.user().onCreate(async (snap, 
   return batch.commit();
 }); 
 
+
 // payment intent
 export const startPaymentIntent = functions.https.onCall(
   async(data, context) => {
@@ -39,7 +41,7 @@ export const startPaymentIntent = functions.https.onCall(
     if (userData) {
       const intent = await stripe.paymentIntents.create({
         amount: data.amount,
-        currency: 'USD',
+        currency: 'EUR',
         customer: userData.customerId
       });
 
