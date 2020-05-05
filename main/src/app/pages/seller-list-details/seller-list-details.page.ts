@@ -15,7 +15,7 @@ export class SellerListDetailsPage implements OnInit {
 
   productForm: FormGroup;
   productImageBase64 = null;
-
+   
   categories = ['Top', 'Dress', 'Jeans', 'Shoes']
 
   constructor(private fb: FormBuilder, private productService: ProductService, private navCtrl: NavController,

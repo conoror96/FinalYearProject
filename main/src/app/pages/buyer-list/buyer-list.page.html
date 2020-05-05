@@ -1,8 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
+      
     </ion-buttons>
     <ion-title>Products</ion-title>
+ <!-- Go To NFC 
+ <ion-item color="primary">
+  <ion-label>NFC</ion-label>
+  <ion-button routerLink="/buyer/nfc"> 
+   <ion-icon slot="icon-only" name="aperture"></ion-icon></ion-button>
+ </ion-item> -->
   </ion-toolbar>
 </ion-header>
 
@@ -11,18 +18,9 @@
   <ion-item color="primary">
   <!-- Left Floating divider -->
   <!-- <div class="sidebar" style="float: left;padding: 5hv;margin-top: 2hv;"> -->
-    <!-- Go To NFC -->
-    <ion-item color="primary">
-     <ion-label>NFC</ion-label>
-     <ion-button routerLink="/buyer/nfc"> 
-      <ion-icon slot="icon-only" name="aperture"></ion-icon></ion-button>
-    </ion-item> 
+    
     <!-- Search -->
-    <ion-item color="primary">
-      <div style="text-align: center; color: black;">
-        <input type="text" [(ngModel)]="filterProducts" placeholder="Search"> 
-      </div> 
-    </ion-item>
+   
    
    <!-- Dropdown for category filter -->
    <ion-item color="primary">
@@ -35,24 +33,12 @@
      <ion-select-option value="jeans">Jeans</ion-select-option>
    </ion-select>
    </ion-item>
-
-  <!-- Go To Orders Page -->
-   <ion-item color="primary">
-    <ion-label>Your Orders</ion-label>
-    <ion-button routerLink="/buyer/orders">
-      <ion-icon slot="icon-only" name="filing"></ion-icon>
-    </ion-button>
-   </ion-item>
-
-   <!-- Signout -->
-   <ion-item color="primary">
-    <ion-label>Logout</ion-label>
-    <ion-button (click)="signOut()">
-      <ion-icon slot="icon-only" name="log-out"></ion-icon>
-    </ion-button>
-   </ion-item>
-  <!-- </div> -->
 </ion-item>
+
+  <div style="text-align: center; color: black;" padding="20hv">
+    <input type="text" [(ngModel)]="filterProducts" placeholder="Search"> 
+  </div> 
+  
 
   <!-- Cart Icon -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -75,10 +61,31 @@
     </ion-item>
   </ion-card>
 </ion-content> 
-
 <!-- Footer -->
 <ion-footer>
   <ion-toolbar color="primary">
     <ion-title></ion-title>
+    <div text-align="center">
+      <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-label>
+    <ion-button routerLink="/buyer/orders">
+      <ion-icon slot="icon-only" name="filing"></ion-icon>
+    </ion-button>
+    <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-label>
+    <ion-button (click)="signOut()">
+      <ion-icon slot="icon-only" name="log-out"></ion-icon>
+    </ion-button>
+ 
+  <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-label>
+  <ion-button routerLink="/buyer/nfc"> 
+   <ion-icon slot="icon-only" name="aperture"></ion-icon></ion-button>
+ 
+    </div>
   </ion-toolbar>
+  <!-- Go To Orders Page 
+  <ion-item color="primary">
+    <ion-label>Your Orders</ion-label>
+    <ion-button routerLink="/buyer/orders">
+      <ion-icon slot="icon-only" name="filing"></ion-icon>
+    </ion-button>
+   </ion-item>-->
 </ion-footer>
