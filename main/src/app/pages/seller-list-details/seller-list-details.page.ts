@@ -16,7 +16,7 @@ export class SellerListDetailsPage implements OnInit {
   productForm: FormGroup;
   productImageBase64 = null;
    
-  categories = ['Top', 'Dress', 'Jeans', 'Shoes']
+  categories = ['Toys', 'Apparel', 'Food', 'Jewelry', 'Art', 'Other']
 
   constructor(private fb: FormBuilder, private productService: ProductService, private navCtrl: NavController,
     private camera: Camera,
@@ -24,7 +24,7 @@ export class SellerListDetailsPage implements OnInit {
 
   ngOnInit() {
     this.productForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', Validators.required], 
       price: ['', Validators.required],
       categoryControl: [''],
       desc: '',
