@@ -72,30 +72,7 @@ ngOnInit() {
         });        
        });
     }
-
-    AddNFCtoCart(){
-    this.db.firestore.collection('products')
-    .where('tagid','==', "049a1092285e80")
-    .get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => { this.id = doc.id; })
-      this.productService.getOneProduct(this.id).subscribe(res => {
-        this.product = res;
-        this.product.id = this.id;
-        this.amount = this.cartService.getItemCount(this.id);
-        console.log('tag id', this.product.tagid);
-
-        if(this.product.tagid == "049a1092285e80")
-        {
-          console.log(this.id)
-        }
-        else {
-          this.presentAlert("Incorrect tag read");
-        }
-      });
-    });
-  }
-
+  
   addToCart() {
     console.log('product added', this.product);
     this.cartService.addProduct(this.product);

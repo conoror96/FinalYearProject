@@ -65,12 +65,12 @@ export class ProductService {
     )
   }
 
+  //delete product
   deleteProduct(id) {
-    const teststore = this.db.collection('products', ref => ref.where('tagid', '==', "049a1092285e80"));
-    console.log("test",teststore);
     this.db.doc(`products/${id}`).delete();
     this.storage.ref(`products/${id}`).delete().subscribe(res => {});
   }
+
 
   // payment intent
   startPaymentIntent(amount, items) {
