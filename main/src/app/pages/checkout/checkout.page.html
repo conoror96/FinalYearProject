@@ -1,12 +1,3 @@
-<!-- <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="buyer"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Checkout</ion-title>
-  </ion-toolbar>
-</ion-header>-->
- 
 <ion-content color="light">
 
   <div class="ion-text-end">
@@ -14,7 +5,7 @@
       <ion-icon name="close" slot="start"></ion-icon>
     </ion-button>
   </div>
-
+  <!-- checkout form -->
   <ion-card color="light">
   <form [formGroup]="dataForm" (submit)="buyNow()">
     <ion-item lines="none"> 
@@ -43,7 +34,7 @@
     <div id="card-errors" role="alert">
       {{ cardErrors}}
     </div>
- 
+    <!-- buy now button -->
     <ion-button expand="block" type="submit" [disabled]="!dataForm.valid">Buy now for ${{ getTotal() }}</ion-button>
   </form>
 </ion-card>

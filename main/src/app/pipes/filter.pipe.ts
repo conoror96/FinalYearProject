@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-
+// pipe used for filtering the products by category or name
   transform(value: any, searchText: string): any {
   
     if(!value || !searchText ){

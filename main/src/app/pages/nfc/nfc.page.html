@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
+  <!-- cart button overlay -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()">
       <div class="cart-length">{{ cartItemCount | async }}</div>
@@ -18,9 +18,9 @@
   
 
   <ion-content>
+    <!-- Read nfc button -->
     <ion-button shape="round" (click)="onDoneClicked()" expand="block">READ</ion-button>
-
-    <!-- If product is read from tag -->
+    <!-- If product is read from tag then display product information -->
     <ion-card *ngIf="product">
       <img [src]="product.img">
       <ion-card-header>

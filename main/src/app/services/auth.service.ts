@@ -50,13 +50,13 @@ export class AuthService {
       });
     });
   }
-
+// sign out method
   signOut() {
     this.afAuth.auth.signOut().then(() => {
       this.navCtrl.navigateRoot('/');
     });
   }
-
+// gets the current users email
   getEmail() {
     return this.afAuth.auth.currentUser.email;
   }

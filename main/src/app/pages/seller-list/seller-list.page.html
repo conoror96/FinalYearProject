@@ -9,7 +9,7 @@
     <ion-title>Sell products</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!-- display seller products -->
 <ion-content color="light">
 <ion-card color="light">
   <ion-item color="light" *ngFor="let p of products | async">
@@ -20,6 +20,7 @@
       {{ p.name }}
       <p>{{ p.price | currency:'EUR' }}</p>
     </ion-label>
+    <!-- button for deleting product -->
     <ion-button color="primary" slot="end" fill="clear" (click)="delete(p.id)">
       <ion-icon name="trash" slot="icon-only"></ion-icon>
     </ion-button>

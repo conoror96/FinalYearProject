@@ -15,7 +15,7 @@ export class ProductService {
     private storage: AngularFireStorage,
     private functions: AngularFireFunctions) { }
 
-
+// gets all products
   getAllProducts() {
     return this.db.collection('products').snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -30,6 +30,7 @@ export class ProductService {
     return this.db.doc(`products/${id}`).valueChanges();
   }
   
+  // create a new product
   addProduct(product) {
     product.creator = this.afAuth.auth.currentUser.uid;
     const imageData = product.img;
@@ -53,6 +54,7 @@ export class ProductService {
     });
   }
 
+  // get sellers products
   getSellerProducts() {
     const id = this.afAuth.auth.currentUser.uid;
 
@@ -79,12 +81,14 @@ export class ProductService {
     return obs;
   }
 
+  // get customer orders
   getCustomerOrders() {
     const callable = this.functions.httpsCallable('getCustomerOrders');
     const obs = callable({ userId: this.afAuth.auth.currentUser.uid });
     return obs;
   }
 
+  // get order data
   getOrderData(paymentIntentId) {
     return this.db.doc(`orders/${paymentIntentId}`).valueChanges();
   }

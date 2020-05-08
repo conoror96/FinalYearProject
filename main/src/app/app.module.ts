@@ -22,7 +22,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
 
-
+// All the declarations and providers needed for the app
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

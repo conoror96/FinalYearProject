@@ -28,11 +28,11 @@ export class BuyerListPage implements OnInit {
     this.products = this.productService.getAllProducts();
     console.log("all products", this.products);
   }
-
+  // call sign out method
   signOut() {
     this.auth.signOut();
   }
-
+  // open cart modal
   async openCart() {
     const modal = await this.modalCtrl.create({
       component: CartModalPage,

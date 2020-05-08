@@ -14,7 +14,7 @@ export class RoleGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const expectedRole = route.data.role;
 
-    // returns a boolean value for if it a buyer or seller account
+    // returns a boolean value for if its a buyer or seller account
     return this.auth.user.pipe(
       take(1),
       map(user => {

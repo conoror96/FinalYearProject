@@ -66,7 +66,7 @@ export class SellerListDetailsPage implements OnInit {
       console.log(event);
       console.log(JSON.stringify(event));
 
-      //this.presentAlert(this.nfc.bytesToHexString(event.tag.id));
+
       this.productForm.patchValue({ tagid: this.nfc.bytesToHexString(event.tag.id)});
     });
   }

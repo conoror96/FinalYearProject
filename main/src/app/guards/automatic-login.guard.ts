@@ -9,7 +9,7 @@ import { take, map } from 'rxjs/operators';
 })
 export class AutomaticLoginGuard implements CanActivate  {
   constructor(private router: Router, private auth: AuthService) { }
-  
+  // Navigate user to correct role (buyer or seller)
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.auth.user.pipe(
       take(1),

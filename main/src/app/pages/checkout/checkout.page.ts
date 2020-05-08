@@ -41,7 +41,7 @@ export class CheckoutPage implements OnInit {
     this.cartService.getCart().subscribe(res => {
       this.cart = res;
     });
- 
+    // credentials form validators
     this.dataForm = this.fb.group({
       name: ['', Validators.required],
       eircode: [''],
@@ -50,7 +50,7 @@ export class CheckoutPage implements OnInit {
       country: ['', Validators.required]
     });
 
- 
+    // Stripe
     this.stripe = Stripe(environment.stripe_key);
     const elements = this.stripe.elements();
 
@@ -62,11 +62,11 @@ export class CheckoutPage implements OnInit {
       this.cardErrors = error && error.message;
     });
   }
- 
+  // get total of order
   getTotal() {
     return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
   }
- 
+  // buy now method. All the data the user entered
   async buyNow() {
     const stripeData = {
       payment_method_data: {
@@ -136,7 +136,6 @@ export class CheckoutPage implements OnInit {
   
 
   close(){
-    //this.modalCtrl.dismiss();
     this.router.navigateByUrl('/buyer/list');
   }
 }

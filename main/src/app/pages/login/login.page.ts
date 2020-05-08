@@ -19,13 +19,14 @@ export class LoginPage implements OnInit {
     private toastCtrl: ToastController, private alertCtrl: AlertController, private router: Router) { }
 
   ngOnInit() {
+    // register new user form validators
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       name: ['', Validators.required],
       role: ['BUYER', Validators.required]
     });
-
+    // login validators
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -40,7 +41,7 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/seller');
     }
   }
-
+  // login 
   async login() {
     let loading = await this.loadingCtrl.create({
       message: 'Loading...'
@@ -63,7 +64,7 @@ export class LoginPage implements OnInit {
       alert.present();
     })
   }
-
+  // register
   async register() {
     let loading = await this.loadingCtrl.create({
       message: 'Loading...'

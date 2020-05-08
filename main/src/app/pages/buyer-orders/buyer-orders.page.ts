@@ -14,7 +14,7 @@ export class BuyerOrdersPage implements OnInit {
 
 
   constructor(private productService: ProductService, private iab: InAppBrowser) { }
-
+  // gets the customer orders
   ngOnInit() {
     this.productService.getCustomerOrders().subscribe(res => {
       console.log('my orders: ', res);
@@ -45,7 +45,7 @@ export class BuyerOrdersPage implements OnInit {
       });
     });
   }
-
+  // opens invoice through in app browser
   openInvoice(item) {
     this.productService.getOrderData(item.id).subscribe(res => {  
       console.log('my order: ', res);

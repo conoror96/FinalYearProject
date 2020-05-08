@@ -19,27 +19,27 @@ export class CartModalPage implements OnInit {
       this.cart = res;
     })
   }
-
+  // call decrease item count method
   decreaseCartItem(product) {
     this.cartService.decreaseProduct(product);
   }
- 
+ // call increase item count method
   increaseCartItem(product) {
     this.cartService.addProduct(product);
   }
- 
+  // call remove item from cart method
   removeCartItem(product) { 
     this.cartService.removeProduct(product);
   }
-
+  // gets total price of items in cart
   getTotal() {
     return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
   }
-
+  // close the overlay
   close() {
     this.modalCtrl.dismiss();
   }
-
+  // go to checkout
   checkout(){
     this.modalCtrl.dismiss();
     this.router.navigateByUrl('/buyer/checkout');

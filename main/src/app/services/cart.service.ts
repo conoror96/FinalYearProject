@@ -20,7 +20,7 @@ export class CartService {
   getCartItemCount() {
     return this.cartItemCount;
   }
-  
+  // Add a product to the cart
   addProduct(product) {
     let added = false;
     for (let p of this.cart) {
@@ -37,7 +37,7 @@ export class CartService {
     this.cartItems.next(this.cart);
     this.cartItemCount.next(this.cartItemCount.value + 1);
   }
- 
+ // decrease amount of a product in the cart
   decreaseProduct(product) {
     for (let [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
@@ -50,7 +50,7 @@ export class CartService {
     this.cartItems.next(this.cart);
     this.cartItemCount.next(this.cartItemCount.value - 1);
   }
- 
+ // remove all of a specific product from the cart
   removeProduct(product) {
     for (let [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
@@ -60,7 +60,7 @@ export class CartService {
     }
     this.cartItems.next(this.cart);
   }
-
+  // gets count of products in the cart
   getItemCount(id) {
     for (let [index, p] of this.cart.entries()) {
       if (p.id === id) {

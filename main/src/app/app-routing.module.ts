@@ -8,17 +8,20 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/']);
 
 const routes: Routes = [
   {
+    // first page the user sees is the login page
     path: '',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
     canActivate: [AutomaticLoginGuard]
   },
   {
+    // if a buyer logs in
     path: 'buyer',
     canActivate: [AngularFireAuthGuard, RoleGuard],
     data: {
       authGuardPipe: redirectUnauthorizedToLogin,
       role: 'BUYER'
     },
+    // children pages of the buyer: products, checkout, orders, nfc, etc.
     children: [ 
       {
         path: 'list',
@@ -37,10 +40,6 @@ const routes: Routes = [
         loadChildren: () => import('./pages/buyer-orders/buyer-orders.module').then( m => m.BuyerOrdersPageModule)
       },
       {
-        path: 'list/Dress',
-        loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
-      },
-      {
         path: 'nfc',
         loadChildren: () => import('./pages/nfc/nfc.module').then( m => m.NfcPageModule)
       },
@@ -53,12 +52,14 @@ const routes: Routes = [
     ]
   },
   {
+    // if a seller logs in: seller products, create new product
     path: 'seller',
     canActivate: [AngularFireAuthGuard, RoleGuard],
     data: {
       authGuardPipe: redirectUnauthorizedToLogin,
       role: 'SELLER'
     },
+    // children pages of the seller
     children: [
       {
         path: 'list',

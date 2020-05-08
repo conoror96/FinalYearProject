@@ -48,7 +48,7 @@ ngOnInit() {
     this.amount = this.cartService.getItemCount(this.id);
   });
   }
-
+  // on Ndef event - what happens when a tag is read
   private onNdefEvent(event) {
     this.listenAlert.dismiss();
   
@@ -72,17 +72,17 @@ ngOnInit() {
         });        
        });
     }
-  
+  // add product to cart
   addToCart() {
     console.log('product added', this.product);
     this.cartService.addProduct(this.product);
   }
 
-
+// called when nfc button is clicked
   onDoneClicked() {
     this.setupNFC();
   }
-
+// NFC is set up
   async setupNFC() {
     this.loading = await this.loadingCtrl.create();
     await this.loading.present();
@@ -100,7 +100,7 @@ ngOnInit() {
         this.alertNfcUnavailable();
       });
   }
-
+  // Ndef listener
   setNdefListener(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.nfc.enabled()
@@ -119,7 +119,7 @@ ngOnInit() {
         });
     });
   }
-
+  // Ndef Subscription
   private setNdefSubscription(): Promise<void> {
     return new Promise<void>((resolve) => {
       this.nfcSubscription = this.ndefEventObservable.subscribe((event) => {
@@ -129,7 +129,7 @@ ngOnInit() {
     });
   }
 
-
+  // Alert the user to approach an nfc tag
   private async setReadNfcAlert() {
     this.listenAlert = await this.alertCtrl.create({
       message: 'Please approach your phone to the NFC tag',
@@ -147,21 +147,7 @@ ngOnInit() {
       this.nfcSubscription.unsubscribe();
     });
   }
-
-  private onRead() {
-    this.alertCtrl.create({
-      message: 'Add Product to cart?',
-      buttons: [
-        {
-          text: 'Okay',
-          role: 'cancel'
-        }
-      ]
-    }).then(alertEl => {
-      alertEl.present();
-    });
-  }
-
+  // alert the user to turn on nfc on device
   private alertNfcUnavailable() {
     this.alertCtrl.create({
       message: 'Please enable NFC first',
@@ -184,7 +170,7 @@ ngOnInit() {
     });
     await alert.present();
   }
-
+// open cart
   async openCart() {
     const modal = await this.modalCtrl.create({
       component: CartModalPage,

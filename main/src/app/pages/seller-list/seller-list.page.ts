@@ -14,14 +14,15 @@ export class SellerListPage implements OnInit {
   constructor(private auth: AuthService, private productService: ProductService) { }
 
   ngOnInit() {
+    // get selle products from product service
     this.products = this.productService.getSellerProducts();
     console.log(this.products);
   }
-
+  // call delete product method from product service
   delete(id) {
     this.productService.deleteProduct(id);
   }
-
+  // signs out user
   signOut() {
     this.auth.signOut();
   }
