@@ -1,4 +1,4 @@
-# FinalYearProject - Conor O'Reilly &amp; Christian Olim
+# FinalYearProject - Conor O'Reilly
 
 
 Note: Christian and I both wrote the dissertation independently and submitted two different ones.
