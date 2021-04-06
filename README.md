@@ -1,8 +1,5 @@
 # FinalYearProject - Conor O'Reilly
 
-
-Note: Christian and I both wrote the dissertation independently and submitted two different ones.
-
 A screencast of the running project can be found here: https://github.com/kodama96/FinalYearProject/tree/master/video
 
 <h5>Run the project in a web browser</h5>
